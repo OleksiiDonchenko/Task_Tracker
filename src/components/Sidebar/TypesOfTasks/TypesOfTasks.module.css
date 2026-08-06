@@ -1,0 +1,35 @@
+.typesOfTasks {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.typeOfTasks {
+  width: 100%;
+  max-width: 210px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  
+  font-weight: 500;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+  cursor: pointer;
+  user-select: none;
+}
+
+.typeOfTasks._active {
+  color: #5345D5;
+  background-color: #5345d530;
+}
+
+.iconAndText {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}

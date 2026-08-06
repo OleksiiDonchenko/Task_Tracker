@@ -1,0 +1,25 @@
+.btn {
+  background-color: #6240E0;
+  padding: 10px;
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border: solid 1px transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #512bde;
+  }
+}
+
+.plus {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
