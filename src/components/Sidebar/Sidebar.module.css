@@ -3,15 +3,8 @@
   background-color: #FBFBFB;
 }
 
-.icon {
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-}
-
-.title {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+.container {
+  width: 100%;
+  max-width: 230px;
+  margin: 0 auto;
 }
