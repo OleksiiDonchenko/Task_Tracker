@@ -3,6 +3,8 @@ import styles from './Sidebar.module.css';
 import Title from './Title/Title';
 import AddTaskButton from './AddTaskButton/AddTaskButton';
 import TypesOfTasks from './TypesOfTasks/TypesOfTasks';
+import Divider from '../Divider/Divider';
+import FiltersOfTasks from './FiltersOfTasks/FiltersOfTasks';
 
 const Sidebar = () => {
 
@@ -12,6 +14,8 @@ const Sidebar = () => {
         <Title />
         <AddTaskButton />
         <TypesOfTasks />
+        <Divider />
+        <FiltersOfTasks />
       </div>
     </aside>
   );
