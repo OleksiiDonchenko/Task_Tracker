@@ -5,6 +5,7 @@ import AddTaskButton from './AddTaskButton/AddTaskButton';
 import TypesOfTasks from './TypesOfTasks/TypesOfTasks';
 import Divider from '../Divider/Divider';
 import FiltersOfTasks from './FiltersOfTasks/FiltersOfTasks';
+import SortOfTasks from './SortOfTasks/SortOfTasks';
 
 const Sidebar = () => {
 
@@ -16,6 +17,7 @@ const Sidebar = () => {
         <TypesOfTasks />
         <Divider />
         <FiltersOfTasks />
+        <SortOfTasks />
       </div>
     </aside>
   );

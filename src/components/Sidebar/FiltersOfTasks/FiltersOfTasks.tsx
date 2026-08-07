@@ -21,8 +21,8 @@ const FiltersOfTasks = () => {
         <li className={getLiClass(styles.high, 'high')} onClick={() => setActiveTab('high')}>High</li>
         <li className={getLiClass(styles.medium, 'medium')} onClick={() => setActiveTab('medium')}>Medium</li>
         <li className={getLiClass(styles.low, 'low')} onClick={() => setActiveTab('low')}>Low</li>
-      </ul >
-    </div >
+      </ul>
+    </div>
   );
 };
 

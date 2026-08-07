@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sortBy {
+  margin: 10px 0;
+}
+
+.typesOfSort {
+  width: 100%;
+  max-width: 230px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.typeOfSort {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-align: left;
+  user-select: none;
+}
+
+.typeOfSort._active {
+  background-color: #5345d530;
+}
