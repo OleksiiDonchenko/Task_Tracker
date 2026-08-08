@@ -1,5 +1,16 @@
 export { TaskTrackerIcon } from './TaskTrackerIcon';
+export { PlusIcon } from './PlusIcon';
 export { AllTasksIcon } from './AllTasksIcon';
 export { ActiveTasksIcon } from './ActiveTasksIcon';
 export { CompletedTasksIcon } from './CompletedTasksIcon';
 export { TrashTasksIcon } from './TrashTasksIcon';
+export { SearchIcon } from './SearchIcon';
+export { SunIcon } from './SunIcon';
+export { MoonIcon } from './MoonIcon';
+export { BellIcon } from './BellIcon';
+export { ArrowDownIcon } from './ArrowDownIcon';
+export { ArrowUpIcon } from './ArrowUpIcon';
+export { CalendarIcon } from './CalendarIcon';
+export { StarIcon } from './StarIcon';
+export { ThreeDotsVerticalIcon } from './ThreeDotsVerticalIcon';
+export { CrossIcon } from './CrossIcon';

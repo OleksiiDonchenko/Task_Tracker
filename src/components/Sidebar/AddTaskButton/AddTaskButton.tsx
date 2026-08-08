@@ -1,6 +1,6 @@
 import { } from 'react';
 import styles from './AddTaskButton.module.css';
-import { PlusIcon } from '../../../assets/icons/components/PlusIcon';
+import { PlusIcon } from '../../../assets/icons/components';
 
 const AddTaskButton = () => {
   return (
