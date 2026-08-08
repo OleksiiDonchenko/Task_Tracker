@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './TypesOfTasks.module.css';
-import { ActiveTasksIcon, AllTasksIcon, CompletedTasksIcon, TrashTasksIcon } from '../../../assets/icons';
+import { ActiveTasksIcon, AllTasksIcon, CompletedTasksIcon, TrashTasksIcon } from '../../../assets/icons/components';
 
 type TabType = 'all' | 'active' | 'completed' | 'trash';
 

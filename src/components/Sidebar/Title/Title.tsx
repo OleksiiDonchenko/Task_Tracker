@@ -1,11 +1,11 @@
 import { } from 'react';
 import styles from './Title.module.css';
-import icon from '../../../assets/icon.svg';
+import { TaskTrackerIcon } from '../../../assets/icons/components';
 
 const Title = () => {
   return (
     <div className={styles.title}>
-      <img src={icon} alt="Icon" className={styles.icon} />
+      <TaskTrackerIcon />
       <h2>TaskTracker</h2>
     </div>
   );

@@ -1,0 +1,22 @@
+.taskTrackerIcon {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  color: #613FDF;
+}
+
+.plusIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  color: #fff;
+}
+
+.allTasksIcon,
+.activeTasksIcon,
+.completedTasksIcon,
+.trashTasksIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}

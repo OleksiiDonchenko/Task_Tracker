@@ -4,7 +4,7 @@ import styles from './Icons.module.css';
 export const AllTasksIcon = () => {
   return (
     <svg fill="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 512" className={styles.allTasks}>
+      viewBox="0 0 512 512" className={styles.allTasksIcon}>
       <g>
         <g>
           <path d="M369.44,0H141.889C97.971,0,62.578,36.182,62.578,80.108v352.675c0,43.927,35.393,79.217,79.311,79.217H369.44
