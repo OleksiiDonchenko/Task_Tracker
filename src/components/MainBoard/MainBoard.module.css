@@ -1,3 +1,13 @@
 .mainboard {
   background-color: #FFFEFF;
 }
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 10px 25px;
+}
+
+.header {
+  display: flex;
+}
