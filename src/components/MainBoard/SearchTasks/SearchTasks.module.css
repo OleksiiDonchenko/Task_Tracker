@@ -1,6 +1,5 @@
 .searchWrapper {
   position: relative;
-  width: 100%;
 }
 
 .searchWrapper:has(input:placeholder-shown)::after {
