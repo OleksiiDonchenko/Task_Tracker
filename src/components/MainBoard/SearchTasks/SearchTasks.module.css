@@ -1,6 +1,9 @@
 .searchWrapper {
   position: relative;
 }
+.searchWrapper svg {
+  user-select: none;
+}
 
 .searchWrapper:has(input:placeholder-shown)::after {
   content: 'Ctrl + Enter to add task';
