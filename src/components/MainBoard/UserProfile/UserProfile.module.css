@@ -1,0 +1,57 @@
+.userProfile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.name {
+  margin: 0 10px;
+}
+
+.userPhoto {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.arrow {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.arrowWrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+}
+
+.arrow[data-arrow='closed'] .arrowWrapper:nth-child(1) {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.arrow[data-arrow='closed'] .arrowWrapper:nth-child(2) {
+  opacity: 0;
+  transform: rotate(90deg) scale(0);
+}
+
+.arrow[data-arrow='open'] .arrowWrapper:nth-child(1) {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0);
+}
+
+.arrow[data-arrow='open'] .arrowWrapper:nth-child(2) {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
