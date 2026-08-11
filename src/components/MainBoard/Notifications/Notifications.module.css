@@ -1,6 +1,9 @@
 .notifications {
+  flex-basis: 5%;
   cursor: pointer;
   user-select: none;
+  display: flex;
+  align-items: center;
 }
 
 .notifications[data-notifications=true] svg:nth-child(1) {

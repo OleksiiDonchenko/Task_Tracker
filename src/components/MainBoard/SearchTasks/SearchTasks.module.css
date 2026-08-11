@@ -1,5 +1,10 @@
 .searchWrapper {
+  width: 100%;
   position: relative;
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 .searchWrapper svg {
   user-select: none;
@@ -8,7 +13,7 @@
 .searchWrapper:has(input:placeholder-shown)::after {
   content: 'Ctrl + Enter to add task';
   position: absolute;
-  right: -50px;
+  right: 70px;
   top: 8px;
   color: gray;
   pointer-events: none;
@@ -17,6 +22,7 @@
 .search {
   position: relative;
   width: 100%;
+  max-width: 700px;
   padding: 12px;
   padding-left: 50px;
   margin: 0 10px;

@@ -1,5 +1,6 @@
 .themeToggle {
   position: relative;
+  flex-basis: 7%;
   width: 40px;
   height: 40px;
   cursor: pointer;
