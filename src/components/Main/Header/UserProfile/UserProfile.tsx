@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './UserProfile.module.css';
-import blankUserProfilePhoto from '../../../assets/blank-profile.png';
-import { ArrowDownIcon, ArrowUpIcon } from '../../../assets/icons/components';
+import blankUserProfilePhoto from '../../../../assets/blank-profile.png';
+import { ArrowDownIcon, ArrowUpIcon } from '../../../../assets/icons/components';
 
 type ArrowStatus = 'closed' | 'open';
 

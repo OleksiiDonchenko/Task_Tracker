@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './SearchTasks.module.css';
-import { SearchIcon } from '../../../assets/icons/components';
+import { SearchIcon } from '../../../../assets/icons/components';
 
 const SearchTasks = () => {
   const [search, setSearch] = useState('');

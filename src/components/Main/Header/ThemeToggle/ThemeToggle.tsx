@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './ThemeToggle.module.css';
-import { MoonIcon, SunIcon } from '../../../assets/icons/components';
+import { MoonIcon, SunIcon } from '../../../../assets/icons/components';
 
 type Theme = 'light' | 'dark';
 

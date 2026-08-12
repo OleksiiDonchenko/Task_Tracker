@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './Notifications.module.css';
-import { BellIcon } from '../../../assets/icons/components';
+import { BellIcon } from '../../../../assets/icons/components';
 
 const Notifications = () => {
   const [showNotifications, setShowNotifications] = useState(false);

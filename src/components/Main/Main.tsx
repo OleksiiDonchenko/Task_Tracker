@@ -1,5 +1,5 @@
 import { } from 'react';
-import styles from './MainBoard.module.css';
+import styles from './Main.module.css';
 import Header from './Header/Header';
 import MainContent from './MainContent/MainContent';
 
