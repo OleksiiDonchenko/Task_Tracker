@@ -3,8 +3,8 @@ import styles from './CreateOrEditTask.module.css';
 
 const CreateOrEditTask = () => {
   return (
-    <div>
-      
+    <div className={styles.createOrEditTask}>
+      CreateOrEditTask component
     </div>
   );
 };

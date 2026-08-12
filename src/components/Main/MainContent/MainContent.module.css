@@ -1,0 +1,9 @@
+.mainContent {
+  margin: 20px 0;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas:
+    'task_sort_and_filter create_or_edit_task'
+    'tasks create_or_edit_task';
+}

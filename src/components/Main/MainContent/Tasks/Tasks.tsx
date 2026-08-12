@@ -3,8 +3,8 @@ import styles from './Tasks.module.css';
 
 const Tasks = () => {
   return (
-    <div>
-      
+    <div className={styles.tasks}>
+      Tasks component
     </div>
   );
 };

@@ -3,8 +3,8 @@ import styles from './TaskSortAndFilter.module.css';
 
 const TaskSortAndFilter = () => {
   return (
-    <div>
-      
+    <div className={styles.taskSortAndFilter}>
+      TaskSortAndFilter component
     </div>
   );
 };
