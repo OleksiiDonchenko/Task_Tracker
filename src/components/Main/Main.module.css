@@ -1,4 +1,4 @@
-.mainboard {
+.main {
   background-color: #FFFEFF;
   display: flex;
   flex-direction: column;
@@ -11,8 +11,3 @@
   margin: 10px 25px;
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}

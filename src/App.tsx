@@ -1,5 +1,5 @@
 import './App.css'
-import MainBoard from './components/MainBoard/MainBoard'
+import Main from './components/Main/Main'
 import Sidebar from './components/Sidebar/Sidebar'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Sidebar />
-      <MainBoard />
+      <Main />
     </>
   )
 }
