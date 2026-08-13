@@ -6,11 +6,13 @@ import TypesOfTasks from './TypesOfTasks/TypesOfTasks';
 import Divider from '../Divider/Divider';
 import FiltersOfTasks from './FiltersOfTasks/FiltersOfTasks';
 import SortOfTasks from './SortOfTasks/SortOfTasks';
+import { useTaskTrackerContext } from '../../context/TaskTrackerContext';
 
 const Sidebar = () => {
+  const { theme } = useTaskTrackerContext();
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={styles.sidebar} data-theme={theme}>
       <div className={styles.container}>
         <Title />
         <AddTaskButton />

@@ -1,7 +1,14 @@
-.sidebar {
+.sidebar[data-theme='light'] {
   grid-area: sidebar;
-  border: solid 1px F2F3F5;
+  border-right: solid 3px #F2F3F5;
   background-color: #FBFBFB;
+}
+
+.sidebar[data-theme='dark'] {
+  grid-area: sidebar;
+  border-right: solid 3px #292C30;
+  color: #D3D4D8;
+  background-color: #202427;
 }
 
 .container {

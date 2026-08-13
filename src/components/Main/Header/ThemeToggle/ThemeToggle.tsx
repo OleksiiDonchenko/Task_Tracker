@@ -1,15 +1,10 @@
-import { useState } from 'react';
+import { } from 'react';
 import styles from './ThemeToggle.module.css';
 import { MoonIcon, SunIcon } from '../../../../assets/icons/components';
-
-type Theme = 'light' | 'dark';
+import { useTaskTrackerContext } from '../../../../context/TaskTrackerContext';
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState<Theme>('light');
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
+  const { theme, toggleTheme } = useTaskTrackerContext();
 
   return (
     <div className={styles.themeToggle}
