@@ -2,5 +2,4 @@
   border: none;
   border-top: var(--divider-thickness, 1px) solid var(--divider-color, #e0e0e0);
   width: 100%;
-  max-width: 230px;
 }

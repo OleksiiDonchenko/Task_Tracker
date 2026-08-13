@@ -1,21 +1,15 @@
-import { useState } from 'react';
+import { } from 'react';
 import styles from './TypesOfTasks.module.css';
 import { ActiveTasksIcon, AllTasksIcon, CompletedTasksIcon, TrashTasksIcon } from '../../../assets/icons/components';
-
-type TabType = 'all' | 'active' | 'completed' | 'trash';
+import { useTaskTrackerContext } from '../../../context/TaskTrackerContext';
 
 const TypesOfTasks = () => {
-  const [activeTab, setActiveTab] = useState('all');
 
-  const getLiClass = (tabName: TabType) => {
-    return activeTab === tabName
-      ? `${styles.typeOfTasks} ${styles._active}`
-      : styles.typeOfTasks;
-  };
+  const { setActiveTab, getLiClass } = useTaskTrackerContext();
 
   return (
     <ul className={styles.typesOfTasks}>
-      <li className={getLiClass('all')} onClick={() => setActiveTab('all')}>
+      <li className={getLiClass(styles, 'all')} onClick={() => setActiveTab('all')}>
         <div className={styles.iconAndText}>
           <AllTasksIcon />
           All tasks
@@ -24,7 +18,7 @@ const TypesOfTasks = () => {
           {12}
         </div>
       </li>
-      <li className={getLiClass('active')} onClick={() => setActiveTab('active')}>
+      <li className={getLiClass(styles, 'active')} onClick={() => setActiveTab('active')}>
         <div className={styles.iconAndText}>
           <ActiveTasksIcon />
           Active
@@ -33,7 +27,7 @@ const TypesOfTasks = () => {
           {8}
         </div>
       </li>
-      <li className={getLiClass('completed')} onClick={() => setActiveTab('completed')}>
+      <li className={getLiClass(styles, 'completed')} onClick={() => setActiveTab('completed')}>
         <div className={styles.iconAndText}>
           <CompletedTasksIcon />
           Completed
@@ -42,7 +36,7 @@ const TypesOfTasks = () => {
           {4}
         </div>
       </li>
-      <li className={getLiClass('trash')} onClick={() => setActiveTab('trash')}>
+      <li className={getLiClass(styles, 'trash')} onClick={() => setActiveTab('trash')}>
         <div className={styles.iconAndText}>
           <TrashTasksIcon />
           Trash

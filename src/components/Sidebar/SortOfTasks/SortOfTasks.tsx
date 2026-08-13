@@ -1,24 +1,17 @@
-import { useState } from 'react';
+import { } from 'react';
 import styles from './SortOfTasks.module.css';
-
-type TabType = 'newest' | 'oldest' | 'priority';
+import { useTaskTrackerContext } from '../../../context/TaskTrackerContext';
 
 const SortOfTasks = () => {
-  const [activeTab, setActiveTab] = useState('newest');
-
-  const getLiClass = (style: string, tabName: TabType) => {
-    return activeTab === tabName
-      ? `${style} ${styles._active}`
-      : style;
-  }
+  const { setActiveTabOfSort, getLiClassOfSort } = useTaskTrackerContext();
 
   return (
     <div className={styles.container}>
       <h3 className={styles.sortBy}>Sort by</h3>
       <ul className={styles.typesOfSort}>
-        <li className={getLiClass(styles.typeOfSort, 'newest')} onClick={() => setActiveTab('newest')}>Newest</li>
-        <li className={getLiClass(styles.typeOfSort, 'oldest')} onClick={() => setActiveTab('oldest')}>Oldest</li>
-        <li className={getLiClass(styles.typeOfSort, 'priority')} onClick={() => setActiveTab('priority')}>Priority</li>
+        <li className={getLiClassOfSort(styles, 'newest')} onClick={() => setActiveTabOfSort('newest')}>Newest</li>
+        <li className={getLiClassOfSort(styles, 'oldest')} onClick={() => setActiveTabOfSort('oldest')}>Oldest</li>
+        <li className={getLiClassOfSort(styles, 'priority')} onClick={() => setActiveTabOfSort('priority')}>Priority</li>
       </ul>
     </div>
   );

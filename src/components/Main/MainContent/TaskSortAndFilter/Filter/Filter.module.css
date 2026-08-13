@@ -1,0 +1,25 @@
+.typesOfFilters {
+  display: flex;
+}
+
+.typeOfTasks {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0 20px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.typeOfTasks._active {
+  position: relative;
+  color: #5345D5;
+}
+
+._active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  bottom: -17px;
+  left: 0;
+  border-bottom: 2px solid #5345D5;
+}
