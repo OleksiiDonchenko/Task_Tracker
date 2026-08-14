@@ -1,5 +1,5 @@
-.taskSortAndFilter {
-  grid-area: task_sort_and_filter;
+.taskTabsAndSort {
+  grid-area: task_tabs_and_sort;
 }
 
 .wrapper {
