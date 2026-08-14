@@ -1,8 +1,8 @@
 import { } from 'react';
-import styles from './Filter.module.css';
+import styles from './TaskTabs.module.css';
 import { useTaskTrackerContext } from '../../../../../context/TaskTrackerContext';
 
-const Filter = () => {
+const TaskTabs = () => {
   const { setActiveTab, getLiClass } = useTaskTrackerContext();
 
   return (
@@ -16,4 +16,4 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+export default TaskTabs;

@@ -28,7 +28,7 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  // Types of tasks
+  // Tabs of tasks
   const [activeTab, setActiveTab] = useState<TabType>('all');
 
   const getLiClass = (styles: any, tabName: TabType) => {
