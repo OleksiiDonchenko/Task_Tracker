@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import type { ArrowStatus, TabType, TabTypeOfSort, TaskTrackerContextType, Theme } from './types';
+import type { ArrowStatus, TabType, TabTypeOfPriority, TabTypeOfSort, TaskTrackerContextType, Theme } from './types';
 
 const TaskTrackerContext = createContext<TaskTrackerContextType | undefined>(undefined);
 
@@ -38,6 +38,15 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
       : styles.typeOfTasks;
   };
 
+  // Priority of tasks
+  const [activeTabOfPriority, setActiveTabOfPriority] = useState<TabTypeOfPriority>('all');
+
+  const getLiClassOfPriority = (style: string, styles: any, tabName: TabTypeOfPriority) => {
+    return activeTabOfPriority === tabName
+      ? `${style} ${styles._active}`
+      : style;
+  }
+
   // Types of sort
   const [activeTabOfSort, setActiveTabOfSort] = useState('newest');
 
@@ -50,7 +59,7 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
 
   return (
     <TaskTrackerContext.Provider value={{
-      theme, toggleTheme, setActiveTab, getLiClass, setActiveTabOfSort, getLiClassOfSort, arrowStatus, toggleArrow
+      theme, toggleTheme, setActiveTab, getLiClass, setActiveTabOfPriority, getLiClassOfPriority, setActiveTabOfSort, getLiClassOfSort, arrowStatus, toggleArrow,
     }}>
       {children}
     </ TaskTrackerContext.Provider>
