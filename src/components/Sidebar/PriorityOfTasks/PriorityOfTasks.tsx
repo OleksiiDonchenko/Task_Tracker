@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import styles from './FiltersOfTasks.module.css';
+import styles from './PriorityOfTasks.module.css';
 
 type TabType = 'all' | 'high' | 'medium' | 'low';
 
-const FiltersOfTasks = () => {
+const PriorityOfTasks = () => {
   const [activeTab, setActiveTab] = useState('all');
 
   const getLiClass = (style: string, tabName: TabType) => {
@@ -26,4 +26,4 @@ const FiltersOfTasks = () => {
   );
 };
 
-export default FiltersOfTasks;
+export default PriorityOfTasks;

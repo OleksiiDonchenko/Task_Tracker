@@ -4,7 +4,7 @@ import Title from './Title/Title';
 import AddTaskButton from './AddTaskButton/AddTaskButton';
 import TypesOfTasks from './TypesOfTasks/TypesOfTasks';
 import Divider from '../Divider/Divider';
-import FiltersOfTasks from './FiltersOfTasks/FiltersOfTasks';
+import PriorityOfTasks from './PriorityOfTasks/PriorityOfTasks';
 import SortOfTasks from './SortOfTasks/SortOfTasks';
 import { useTaskTrackerContext } from '../../context/TaskTrackerContext';
 
@@ -18,7 +18,7 @@ const Sidebar = () => {
         <AddTaskButton />
         <TypesOfTasks />
         <Divider />
-        <FiltersOfTasks />
+        <PriorityOfTasks />
         <SortOfTasks />
       </div>
     </aside>
