@@ -4,9 +4,13 @@
   right: 33px;
   border: 2px solid #512bde;
   border-radius: 10px;
+  background-color: #EEF0F1;
   box-shadow: 0 0 8px rgba(102, 74, 226, 0.5);
-  /* transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease; */
   transition: all 0.5s ease;
+}
+
+.typesOfSort[data-theme='dark'] {
+  background-color: #191D20;
 }
 
 .typeOfSort {
@@ -19,11 +23,13 @@
 
 .typesOfSort[data-arrow='closed'] {
   opacity: 0;
+  visibility: hidden;
 }
 
 .typesOfSort[data-arrow='open'] {
   top: 50px;
   opacity: 1;
+  visibility: visible;
 }
 
 .typeOfSort._active {

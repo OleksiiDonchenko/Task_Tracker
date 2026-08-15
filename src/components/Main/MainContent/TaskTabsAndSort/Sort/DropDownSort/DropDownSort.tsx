@@ -7,10 +7,10 @@ type DropDownSortProps = {
 }
 
 const DropDownSort = ({arrowStatus}: DropDownSortProps) => {
-  const { setActiveTabOfSort, getLiClassOfSort } = useTaskTrackerContext();
+  const { theme, setActiveTabOfSort, getLiClassOfSort } = useTaskTrackerContext();
 
   return (
-    <ul className={styles.typesOfSort} data-arrow={arrowStatus}>
+    <ul className={styles.typesOfSort} data-theme={theme} data-arrow={arrowStatus}>
       <li className={getLiClassOfSort(styles, 'newest')} onClick={() => setActiveTabOfSort('newest')}>Newest</li>
       <li className={getLiClassOfSort(styles, 'oldest')} onClick={() => setActiveTabOfSort('oldest')}>Oldest</li>
       <li className={getLiClassOfSort(styles, 'priority')} onClick={() => setActiveTabOfSort('priority')}>Priority</li>
