@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
-import type { ArrowStatus, TabType, TabTypeOfPriority, TabTypeOfSort, TaskTrackerContextType, Theme } from './types';
+import type { ArrowStatus, TabType, TabTypeOfPriority, TabTypeOfSort, Task, TaskTrackerContextType, Theme } from './types';
+import { testArrTasks } from '../dataTest/dataTest';
 
 const TaskTrackerContext = createContext<TaskTrackerContextType | undefined>(undefined);
 
@@ -57,9 +58,12 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
       : styles.typeOfSort;
   }
 
+  // Tasks
+  const [tasks, setTasks] = useState<Task[]>(testArrTasks);
+
   return (
     <TaskTrackerContext.Provider value={{
-      theme, toggleTheme, setActiveTab, getLiClass, setActiveTabOfPriority, getLiClassOfPriority, setActiveTabOfSort, getLiClassOfSort, arrowStatus, toggleArrow,
+      theme, toggleTheme, setActiveTab, getLiClass, setActiveTabOfPriority, getLiClassOfPriority, setActiveTabOfSort, getLiClassOfSort, arrowStatus, toggleArrow, tasks, setTasks,
     }}>
       {children}
     </ TaskTrackerContext.Provider>
