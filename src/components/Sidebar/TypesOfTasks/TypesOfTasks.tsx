@@ -4,12 +4,11 @@ import { ActiveTasksIcon, AllTasksIcon, CompletedTasksIcon, TrashTasksIcon } fro
 import { useTaskTrackerContext } from '../../../context/TaskTrackerContext';
 
 const TypesOfTasks = () => {
-
-  const { setActiveTab, getLiClass } = useTaskTrackerContext();
+  const { getLiClass, handleTabChange } = useTaskTrackerContext();
 
   return (
     <ul className={styles.typesOfTasks}>
-      <li className={getLiClass(styles, 'all')} onClick={() => setActiveTab('all')}>
+      <li className={getLiClass(styles, 'all')} onClick={() => handleTabChange('all')}>
         <div className={styles.iconAndText}>
           <AllTasksIcon />
           All tasks
@@ -18,7 +17,7 @@ const TypesOfTasks = () => {
           {12}
         </div>
       </li>
-      <li className={getLiClass(styles, 'active')} onClick={() => setActiveTab('active')}>
+      <li className={getLiClass(styles, 'active')} onClick={() => handleTabChange('active')}>
         <div className={styles.iconAndText}>
           <ActiveTasksIcon />
           Active
@@ -27,7 +26,7 @@ const TypesOfTasks = () => {
           {8}
         </div>
       </li>
-      <li className={getLiClass(styles, 'completed')} onClick={() => setActiveTab('completed')}>
+      <li className={getLiClass(styles, 'completed')} onClick={() => handleTabChange('completed')}>
         <div className={styles.iconAndText}>
           <CompletedTasksIcon />
           Completed
@@ -36,7 +35,7 @@ const TypesOfTasks = () => {
           {4}
         </div>
       </li>
-      <li className={getLiClass(styles, 'trash')} onClick={() => setActiveTab('trash')}>
+      <li className={getLiClass(styles, 'trash')} onClick={() => handleTabChange('trash')}>
         <div className={styles.iconAndText}>
           <TrashTasksIcon />
           Trash

@@ -33,11 +33,15 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
   const [activeTab, setActiveTab] = useState<TabType>('all');
 
   const getLiClass = (styles: any, tabName: TabType) => {
-    setArrowStatus('closed');
     return activeTab === tabName
       ? `${styles.typeOfTasks} ${styles._active}`
       : styles.typeOfTasks;
   };
+
+  const handleTabChange = (tabName: TabType) => {
+    setActiveTab(tabName);
+    setArrowStatus('closed');
+  }
 
   // Priority of tasks
   const [activeTabOfPriority, setActiveTabOfPriority] = useState<TabTypeOfPriority>('all');
@@ -48,14 +52,23 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
       : style;
   }
 
+  const handlePriorityChange = (tabName: TabTypeOfPriority) => {
+    setActiveTabOfPriority(tabName);
+    setArrowStatus('closed');
+  }
+
   // Types of sort
   const [activeTabOfSort, setActiveTabOfSort] = useState('newest');
 
   const getLiClassOfSort = (styles: any, tabName: TabTypeOfSort) => {
-    setArrowStatus('closed');
     return activeTabOfSort === tabName
       ? `${styles.typeOfSort} ${styles._active}`
       : styles.typeOfSort;
+  }
+
+  const handleSortChange = (tabName: TabTypeOfSort) => {
+    setActiveTabOfSort(tabName);
+    setArrowStatus('closed');
   }
 
   // Tasks
@@ -63,7 +76,7 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
 
   return (
     <TaskTrackerContext.Provider value={{
-      theme, toggleTheme, setActiveTab, getLiClass, setActiveTabOfPriority, getLiClassOfPriority, setActiveTabOfSort, getLiClassOfSort, arrowStatus, toggleArrow, tasks, setTasks,
+      theme, toggleTheme, setActiveTab, getLiClass, handleTabChange, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, setActiveTabOfSort, getLiClassOfSort, handleSortChange, arrowStatus, toggleArrow, tasks, setTasks,
     }}>
       {children}
     </ TaskTrackerContext.Provider>

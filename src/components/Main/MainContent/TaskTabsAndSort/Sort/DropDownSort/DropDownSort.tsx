@@ -6,14 +6,14 @@ type DropDownSortProps = {
   arrowStatus: 'closed' | 'open';
 }
 
-const DropDownSort = ({arrowStatus}: DropDownSortProps) => {
-  const { theme, setActiveTabOfSort, getLiClassOfSort } = useTaskTrackerContext();
+const DropDownSort = ({ arrowStatus }: DropDownSortProps) => {
+  const { theme, getLiClassOfSort, handleSortChange } = useTaskTrackerContext();
 
   return (
     <ul className={styles.typesOfSort} data-theme={theme} data-arrow={arrowStatus}>
-      <li className={getLiClassOfSort(styles, 'newest')} onClick={() => setActiveTabOfSort('newest')}>Newest</li>
-      <li className={getLiClassOfSort(styles, 'oldest')} onClick={() => setActiveTabOfSort('oldest')}>Oldest</li>
-      <li className={getLiClassOfSort(styles, 'priority')} onClick={() => setActiveTabOfSort('priority')}>Priority</li>
+      <li className={getLiClassOfSort(styles, 'newest')} onClick={() => handleSortChange('newest')}>Newest</li>
+      <li className={getLiClassOfSort(styles, 'oldest')} onClick={() => handleSortChange('oldest')}>Oldest</li>
+      <li className={getLiClassOfSort(styles, 'priority')} onClick={() => handleSortChange('priority')}>Priority</li>
     </ul>
   );
 };

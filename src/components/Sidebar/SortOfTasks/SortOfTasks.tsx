@@ -3,15 +3,15 @@ import styles from './SortOfTasks.module.css';
 import { useTaskTrackerContext } from '../../../context/TaskTrackerContext';
 
 const SortOfTasks = () => {
-  const { setActiveTabOfSort, getLiClassOfSort } = useTaskTrackerContext();
+  const { getLiClassOfSort, handleSortChange } = useTaskTrackerContext();
 
   return (
     <div className={styles.container}>
       <h3 className={styles.sortBy}>Sort by</h3>
       <ul className={styles.typesOfSort}>
-        <li className={getLiClassOfSort(styles, 'newest')} onClick={() => setActiveTabOfSort('newest')}>Newest</li>
-        <li className={getLiClassOfSort(styles, 'oldest')} onClick={() => setActiveTabOfSort('oldest')}>Oldest</li>
-        <li className={getLiClassOfSort(styles, 'priority')} onClick={() => setActiveTabOfSort('priority')}>Priority</li>
+        <li className={getLiClassOfSort(styles, 'newest')} onClick={() => handleSortChange('newest')}>Newest</li>
+        <li className={getLiClassOfSort(styles, 'oldest')} onClick={() => handleSortChange('oldest')}>Oldest</li>
+        <li className={getLiClassOfSort(styles, 'priority')} onClick={() => handleSortChange('priority')}>Priority</li>
       </ul>
     </div>
   );
