@@ -1,9 +1,10 @@
 .mainContent {
   margin: 20px 0;
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-rows: max-content 1fr;
   grid-template-columns: 2fr 1fr;
   grid-template-areas:
     'task_tabs_and_sort create_or_edit_task'
     'tasks create_or_edit_task';
+  column-gap: 20px;
 }

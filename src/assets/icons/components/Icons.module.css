@@ -54,7 +54,6 @@
 .calendarIcon {
   width: 25px;
   height: 25px;
-  color: #888B96;
 }
 
 .starIcon {
@@ -82,4 +81,9 @@
   width: 25px;
   height: 25px;
   color: #4D4D5B;
+}
+
+.crossIcon {
+  width: 25px;
+  height: 25px;
 }

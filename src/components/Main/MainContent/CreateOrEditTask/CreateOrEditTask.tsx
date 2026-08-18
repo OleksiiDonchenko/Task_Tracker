@@ -1,10 +1,11 @@
 import { } from 'react';
 import styles from './CreateOrEditTask.module.css';
+import CreateTask from './CreateTask/CreateTask';
 
 const CreateOrEditTask = () => {
   return (
     <div className={styles.createOrEditTask}>
-      CreateOrEditTask component
+      <CreateTask />
     </div>
   );
 };

@@ -10,10 +10,13 @@ export interface TaskTrackerContextType {
   setActiveTabOfSort: (p: TabTypeOfSort) => void;
   getLiClassOfSort: (s: any, tabName: TabTypeOfSort) => string;
   handleSortChange: (tabName: TabTypeOfSort) => void;
-  arrowStatus: ArrowStatus;
-  toggleArrow: () => void;
+  sortArrowStatus: ArrowStatus;
+  toggleSortArrow: () => void;
   tasks: Task[];
   setTasks: (p: Task[]) => void;
+  priorityArrowStatus: ArrowStatus;
+  setPriorityArrowStatus: (p: ArrowStatus) => void;
+  togglePriorityArrow: () => void;
 }
 
 export type Theme = 'light' | 'dark';

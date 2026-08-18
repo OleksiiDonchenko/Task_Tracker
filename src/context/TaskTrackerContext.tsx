@@ -14,18 +14,25 @@ export const useTaskTrackerContext = () => {
 };
 
 export const TaskTrackerProvider = ({ children }: { children: React.ReactNode }) => {
-  // Arrow status
-  const [arrowStatus, setArrowStatus] = useState<ArrowStatus>('closed');
+  // Sort arrow status
+  const [sortArrowStatus, setSortArrowStatus] = useState<ArrowStatus>('closed');
 
-  const toggleArrow = () => {
-    setArrowStatus(prev => prev === 'closed' ? 'open' : 'closed');
+  const toggleSortArrow = () => {
+    setSortArrowStatus(prev => prev === 'closed' ? 'open' : 'closed');
+  }
+
+  // Priority arrow status
+  const [priorityArrowStatus, setPriorityArrowStatus] = useState<ArrowStatus>('closed');
+
+  const togglePriorityArrow = () => {
+    setPriorityArrowStatus(prev => prev === 'closed' ? 'open' : 'closed');
   }
 
   // Theme color
   const [theme, setTheme] = useState<Theme>('light');
 
   const toggleTheme = () => {
-    setArrowStatus('closed');
+    setSortArrowStatus('closed');
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
@@ -40,7 +47,7 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
 
   const handleTabChange = (tabName: TabType) => {
     setActiveTab(tabName);
-    setArrowStatus('closed');
+    setSortArrowStatus('closed');
   }
 
   // Priority of tasks
@@ -54,7 +61,7 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
 
   const handlePriorityChange = (tabName: TabTypeOfPriority) => {
     setActiveTabOfPriority(tabName);
-    setArrowStatus('closed');
+    setSortArrowStatus('closed');
   }
 
   // Types of sort
@@ -68,7 +75,7 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
 
   const handleSortChange = (tabName: TabTypeOfSort) => {
     setActiveTabOfSort(tabName);
-    setArrowStatus('closed');
+    setSortArrowStatus('closed');
   }
 
   // Tasks
@@ -76,7 +83,7 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
 
   return (
     <TaskTrackerContext.Provider value={{
-      theme, toggleTheme, setActiveTab, getLiClass, handleTabChange, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, setActiveTabOfSort, getLiClassOfSort, handleSortChange, arrowStatus, toggleArrow, tasks, setTasks,
+      theme, toggleTheme, setActiveTab, getLiClass, handleTabChange, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, toggleSortArrow, tasks, setTasks, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow,
     }}>
       {children}
     </ TaskTrackerContext.Provider>

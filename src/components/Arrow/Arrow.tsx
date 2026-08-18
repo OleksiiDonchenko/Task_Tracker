@@ -4,7 +4,7 @@ import { ArrowDownIcon, ArrowUpIcon } from '../../assets/icons/components';
 
 type ArrowProps = {
   status: 'closed' | 'open';
-  toggleArrow: () => void;
+  toggleArrow?: () => void;
 }
 
 const Arrow = ({status, toggleArrow}: ArrowProps) => {
