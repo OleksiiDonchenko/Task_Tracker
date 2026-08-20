@@ -3,6 +3,7 @@ import styles from './CreateTask.module.css';
 import { CalendarIcon, CrossIcon } from '../../../../../assets/icons/components';
 import Arrow from '../../../../Arrow/Arrow';
 import { useTaskTrackerContext } from '../../../../../context/TaskTrackerContext';
+import { useCreateTaskContext } from '../../../../../context/CreateTaskContext';
 
 type Priority = 'High' | 'Medium' | 'Low';
 
@@ -46,7 +47,7 @@ const CreateTask = () => {
     setDate(`${yyyy}-${mm}-${dd}`);
   }, []);
 
-  const handleInputClick = () => {
+  const handleDateInputClick = () => {
     if (dateInputRef.current) {
       try {
         dateInputRef.current.showPicker();
@@ -56,6 +57,8 @@ const CreateTask = () => {
     }
   }
 
+  const { newTask, setNewTask, handleSubmit, convertStringToTaskDate, handleDiscardNewTask } = useCreateTaskContext();
+
   return (
     <div data-theme={theme} className={styles.createTask}>
       <div className={styles.header}>
@@ -64,14 +67,16 @@ const CreateTask = () => {
           <CrossIcon />
         </div>
       </div>
-      <form className={styles.taskForm}>
+      <form className={styles.taskForm} onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
           <label htmlFor='task-title'>Title</label>
-          <input type='text' id='task-title' name='title' required placeholder='Enter task title' />
+          <input type='text' id='task-title' name='title' required placeholder='Enter task title' value={newTask.title}
+            onChange={e => setNewTask({ ...newTask, title: e.currentTarget.value })} />
         </div>
         <div className={styles.formGroup}>
           <label htmlFor='task-desc'>Description</label>
-          <textarea id='task-desc' name='description' rows={4} placeholder='Enter task description' />
+          <textarea id='task-desc' name='description' rows={4} placeholder='Enter task description' value={newTask.description}
+            onChange={e => setNewTask({ ...newTask, description: e.currentTarget.value })} />
         </div>
         <div className={styles.formGroup}>
           <label htmlFor='task-priority' className={styles.selectLabel}>Priority</label>
@@ -88,7 +93,10 @@ const CreateTask = () => {
               {options.map((option) => (
                 <li key={option}
                   className={styles[`${option.toLowerCase()}`]}
-                  onClick={() => handleOptionClick(option)}>
+                  onClick={() => {
+                    handleOptionClick(option);
+                    setNewTask({ ...newTask, priority: option });
+                  }}>
                   {option}
                 </li>
               ))}
@@ -97,23 +105,26 @@ const CreateTask = () => {
         </div>
         <div className={styles.formGroup}>
           <label htmlFor='task-date'>Due date</label>
-          <div className={styles.dateInputContainer} onClick={handleInputClick}>
+          <div className={styles.dateInputContainer} onClick={handleDateInputClick}>
             <input
               ref={dateInputRef}
               type='date'
               id='task-date'
               name='due_date'
               value={date}
-              onChange={(e) => setDate(e.target.value)}
+              onChange={(e) => {
+                setDate(e.target.value);
+                setNewTask({ ...newTask, date: convertStringToTaskDate(e.target.value) });
+              }}
               required
               className={styles.customDateInput} />
-            <div className={styles.dateIcon} onClick={handleInputClick}>
+            <div className={styles.dateIcon} onClick={handleDateInputClick}>
               <CalendarIcon />
             </div>
           </div>
         </div>
         <div className={styles.formActions}>
-          <button type='button' className={styles.btnDiscard}>Discard</button>
+          <button type='button' className={styles.btnDiscard} onClick={handleDiscardNewTask}>Discard</button>
           <button type='submit' className={styles.btnCreate}>Create</button>
         </div>
       </form>

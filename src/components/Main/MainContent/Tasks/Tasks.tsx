@@ -2,13 +2,16 @@ import { } from 'react';
 import styles from './Tasks.module.css';
 import { useTaskTrackerContext } from '../../../../context/TaskTrackerContext';
 import { CalendarIcon, StarIcon, ThreeDotsVerticalIcon } from '../../../../assets/icons/components';
+import { useTasksContext } from '../../../../context/TasksContext';
 
 const Tasks = () => {
-  const { theme, tasks } = useTaskTrackerContext();
+  const { theme } = useTaskTrackerContext();
+
+  const { tasks } = useTasksContext();
 
   return (
     <ul className={styles.tasks} data-theme={theme}>
-      {tasks.map(task => {
+      {tasks.length > 0 ? tasks.map(task => {
         return <li className={styles.task} key={task.key}>
           <label className={styles.customCheckbox}>
             <input type="checkbox" id='completed' defaultChecked={task.completed} />
@@ -16,7 +19,7 @@ const Tasks = () => {
           </label>
           <div className={styles.text} data-text={task.completed}>
             <h4>
-              {task.header}
+              {task.title}
             </h4>
             <p>
               {task.description.length <= 54 ? task.description : `${task.description.slice(0, 54 - 3)}...`}
@@ -36,7 +39,7 @@ const Tasks = () => {
             <ThreeDotsVerticalIcon />
           </div>
         </li>
-      })}
+      }) : <li>No tasks yet</li>}
     </ul>
   );
 };
