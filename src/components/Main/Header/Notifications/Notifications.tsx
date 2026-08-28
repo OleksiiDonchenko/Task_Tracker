@@ -6,7 +6,7 @@ const Notifications = () => {
   const [showNotifications, setShowNotifications] = useState(false);
 
   const toggleNotifications = () => {
-    setShowNotifications((prev) => prev ? false : true);
+    setShowNotifications(!showNotifications);
   }
 
   return (
