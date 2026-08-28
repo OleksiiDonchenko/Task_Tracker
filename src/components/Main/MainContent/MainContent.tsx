@@ -4,17 +4,19 @@ import TaskTabsAndSort from './TaskTabsAndSort/TaskTabsAndSort';
 import Tasks from './Tasks/Tasks';
 import CreateOrEditTask from './CreateOrEditTask/CreateOrEditTask';
 import { TasksProvider } from '../../../context/TasksContext';
-import { CreateTaskProvider } from '../../../context/CreateTaskContext';
+import { CreateOrEditTaskProvider } from '../../../context/CreateOrEditTaskContext';
 
 const MainContent = () => {
+  const createOrEditTaskID = styles.createOrEditTask;
+
   return (
     <div className={styles.mainContent}>
       <TaskTabsAndSort />
       <TasksProvider>
-        <CreateTaskProvider>
+        <CreateOrEditTaskProvider>
           <Tasks />
-          <CreateOrEditTask />
-        </CreateTaskProvider>
+          <CreateOrEditTask createOrEditTaskID={createOrEditTaskID} />
+        </CreateOrEditTaskProvider>
       </TasksProvider>
     </div>
   );

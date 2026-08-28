@@ -8,3 +8,8 @@
     'tasks create_or_edit_task';
   column-gap: 20px;
 }
+
+.mainContent:not(:has(#createOrEditTask *)) {
+  grid-template-columns: 2fr 0fr;
+  column-gap: 0px;
+}

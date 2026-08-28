@@ -1,13 +1,39 @@
-import { } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Tasks.module.css';
 import { useTaskTrackerContext } from '../../../../context/TaskTrackerContext';
 import { CalendarIcon, StarIcon, ThreeDotsVerticalIcon } from '../../../../assets/icons/components';
 import { useTasksContext } from '../../../../context/TasksContext';
+import DropDownThreeDots from './DropDownThreeDots/DropDownThreeDots';
 
 const Tasks = () => {
   const { theme } = useTaskTrackerContext();
 
   const { tasks } = useTasksContext();
+
+  const [taskKey, setTaskKey] = useState(0);
+
+  const handleThreeDotsClick = (key: number) => {
+    tasks.forEach(task => {
+      key === task.key ? setTaskKey(task.key) : undefined;
+      key === taskKey ? setTaskKey(0) : undefined;
+    })
+  }
+
+  const dropDownThreeDotsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropDownThreeDotsRef.current && !dropDownThreeDotsRef.current.contains(e.target as Node)) {
+        setTaskKey(0);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, []);
 
   return (
     <ul className={styles.tasks} data-theme={theme}>
@@ -36,7 +62,12 @@ const Tasks = () => {
               {`${task.date.month} ${task.date.day}, ${task.date.year}`}
             </div>
             <StarIcon favorites={task.favorites} />
-            <ThreeDotsVerticalIcon />
+            <div ref={dropDownThreeDotsRef} className={styles.threeDotsWrapper}>
+              <div className={styles.threeDots} data-status={taskKey === task.key ? 'open' : 'closed'} onClick={() => handleThreeDotsClick(task.key)} tabIndex={0}>
+                <ThreeDotsVerticalIcon />
+              </div>
+              <DropDownThreeDots task={task} threeDotsStatus={taskKey === task.key ? 'open' : 'closed'} setTaskKey={setTaskKey} />
+            </div>
           </div>
         </li>
       }) : <li>No tasks yet</li>}

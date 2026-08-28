@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import type { ArrowStatus, TabType, TabTypeOfPriority, TabTypeOfSort, TaskTrackerContextType, Theme } from './types';
+import type { ArrowStatus, EditTask, TabType, TabTypeOfPriority, TabTypeOfSort, Task, TaskTrackerContextType, Theme } from './types';
 
 const TaskTrackerContext = createContext<TaskTrackerContextType | undefined>(undefined);
 
@@ -77,9 +77,25 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
     setSortArrowStatus('closed');
   }
 
+  // Modification task state
+  const [editTask, setEditTask] = useState<EditTask>(null);
+
+  const handleAddNewTask = () => {
+    setEditTask('new');
+  }
+
+  const handleEditTask = (task: Task, setTaskKey: (n: number) => void) => {
+    setEditTask(task);
+    setTaskKey(0);
+  }
+
+  const handleCloseCreateOrEditTask = () => {
+    setEditTask(null);
+  }
+
   return (
     <TaskTrackerContext.Provider value={{
-      theme, toggleTheme, setActiveTab, getLiClass, handleTabChange, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow,
+      theme, toggleTheme, setActiveTab, getLiClass, handleTabChange, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, editTask, setEditTask, handleAddNewTask, handleEditTask, handleCloseCreateOrEditTask,
     }}>
       {children}
     </ TaskTrackerContext.Provider>

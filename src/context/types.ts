@@ -15,6 +15,11 @@ export interface TaskTrackerContextType {
   priorityArrowStatus: ArrowStatus;
   setPriorityArrowStatus: React.Dispatch<React.SetStateAction<ArrowStatus>>;
   togglePriorityArrow: () => void;
+  editTask: EditTask;
+  setEditTask: React.Dispatch<React.SetStateAction<EditTask>>;
+  handleAddNewTask: () => void;
+  handleEditTask: (task: Task, setTaskKey: (n: number) => void) => void;
+  handleCloseCreateOrEditTask: () => void;
 }
 
 export type Theme = 'light' | 'dark';
@@ -31,22 +36,25 @@ export type Task = {
   favorites: boolean;
   key: number;
 }
-export type Priority = 'High' | 'Medium' | 'Low';
+export type Priority = 'High' | 'Medium' | 'Low' | undefined;
 export type Date = {
   month: string;
   day: number;
   year: number;
-}
+};
+export type EditTask = Task | 'new' | null;
 
 export interface TasksContextType {
   tasks: Task[];
   setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
 }
 
-export interface CreateTaskContextType {
+export interface CreateOrEditTaskContextType {
   newTask: Task;
   setNewTask: React.Dispatch<React.SetStateAction<Task>>;
   handleSubmit: (e: React.SubmitEvent<HTMLFormElement>) => void;
+  handleEditTaskSubmit: (e: React.SubmitEvent<HTMLFormElement>, editTask: Task) => void;
   convertStringToTaskDate: (dateString: string) => Date;
+  convertTaskDateToString: (date: Date | undefined) => string;
   handleDiscardNewTask: () => void;
 }

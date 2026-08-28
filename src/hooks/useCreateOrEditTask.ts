@@ -24,7 +24,7 @@ const initialStateDate: Task = {
   key: Math.random(),
 }
 
-export const useCreateTask = (setTasks: React.Dispatch<React.SetStateAction<Task[]>>) => {
+export const useCreateOrEditTask = (setTasks: React.Dispatch<React.SetStateAction<Task[]>>) => {
   const [newTask, setNewTask] = useState<Task>(initialStateDate);
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
@@ -32,8 +32,14 @@ export const useCreateTask = (setTasks: React.Dispatch<React.SetStateAction<Task
 
     setTasks(prev => [...prev, newTask]);
 
-    setNewTask(prev => ({ ...initialStateDate, date: prev.date }));
+    setNewTask(prev => ({ ...initialStateDate, date: prev.date, key: Math.random() }));
   };
+
+  const handleEditTaskSubmit = (e: React.SubmitEvent<HTMLFormElement>, editTask: Task) => {
+    e.preventDefault();
+
+    setTasks(prev => prev.map(task => task.key === editTask.key ? editTask : task));
+  }
 
   const convertStringToTaskDate = (dateString: string): Date => {
     const [yearStr, monthStr, dayStr] = dateString.split('-');
@@ -49,9 +55,26 @@ export const useCreateTask = (setTasks: React.Dispatch<React.SetStateAction<Task
     };
   };
 
-  const handleDiscardNewTask = () => {
-    setNewTask(initialStateDate);
+  const convertTaskDateToString = (date: Date | undefined): string => {
+    if (!date)
+      return '';
+
+    const yyyy = date.year;
+    const mm = String(MONTHS.findIndex(mm => mm === date.month) + 1).padStart(2, '0');
+    const dd = String(date.day).padStart(2, '0');
+
+    return `${yyyy}-${mm}-${dd}`;
   }
 
-  return { newTask, setNewTask, handleSubmit, convertStringToTaskDate, handleDiscardNewTask };
+  const handleDiscardNewTask = () => {
+    setNewTask({
+      ...initialStateDate, priority: 'High', date: {
+        month: mm,
+        day: dd,
+        year: yyyy,
+      }
+    });
+  }
+
+  return { newTask, setNewTask, handleSubmit, handleEditTaskSubmit, convertStringToTaskDate, convertTaskDateToString, handleDiscardNewTask };
 };

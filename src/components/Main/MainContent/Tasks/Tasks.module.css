@@ -94,7 +94,7 @@
   align-items: flex-start;
   text-align: left;
   width: 100%;
-  max-width: 430px;
+  /* max-width: 430px; */
 }
 
 .text[data-text='true'] {
@@ -167,4 +167,20 @@
   font-size: 14px;
   font-weight: 500;
   color: #888B96;
+}
+
+.threeDotsWrapper {
+  position: relative;
+}
+
+.threeDots {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.threeDots:active {
+  transform: scale(0.9);
 }
