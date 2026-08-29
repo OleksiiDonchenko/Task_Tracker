@@ -4,11 +4,12 @@ import { useTaskTrackerContext } from '../../../../context/TaskTrackerContext';
 import { CalendarIcon, StarIcon, ThreeDotsVerticalIcon } from '../../../../assets/icons/components';
 import { useTasksContext } from '../../../../context/TasksContext';
 import DropDownThreeDots from './DropDownThreeDots/DropDownThreeDots';
+import { useCreateOrEditTaskContext } from '../../../../context/CreateOrEditTaskContext';
 
 const Tasks = () => {
   const { theme } = useTaskTrackerContext();
-
   const { tasks } = useTasksContext();
+  const { handleCompletedTask } = useCreateOrEditTaskContext();
 
   const [taskKey, setTaskKey] = useState(0);
 
@@ -40,7 +41,7 @@ const Tasks = () => {
       {tasks.length > 0 ? tasks.map(task => {
         return <li className={styles.task} key={task.key}>
           <label className={styles.customCheckbox}>
-            <input type="checkbox" id='completed' defaultChecked={task.completed} />
+            <input type="checkbox" id='completed' defaultChecked={task.completed} onClick={() => handleCompletedTask(task)} />
             <span className={styles.checkmark}></span>
           </label>
           <div className={styles.text} data-text={task.completed}>

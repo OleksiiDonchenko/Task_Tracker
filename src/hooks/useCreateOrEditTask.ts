@@ -80,5 +80,9 @@ export const useCreateOrEditTask = (setTasks: React.Dispatch<React.SetStateActio
     });
   }
 
-  return { newTask, setNewTask, handleSubmit, handleEditTaskSubmit, handleDeleteTask, convertStringToTaskDate, convertTaskDateToString, handleDiscardNewTask };
+  const handleCompletedTask = (task: Task) => {
+    setTasks(prev => prev.map(t => t.key === task.key ? { ...t, completed: !task.completed } : t));
+  }
+
+  return { newTask, setNewTask, handleSubmit, handleEditTaskSubmit, handleDeleteTask, convertStringToTaskDate, convertTaskDateToString, handleDiscardNewTask, handleCompletedTask };
 };

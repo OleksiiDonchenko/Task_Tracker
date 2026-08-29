@@ -58,4 +58,5 @@ export interface CreateOrEditTaskContextType {
   convertStringToTaskDate: (dateString: string) => Date;
   convertTaskDateToString: (date: Date | undefined) => string;
   handleDiscardNewTask: () => void;
+  handleCompletedTask: (task: Task) => void;
 }
