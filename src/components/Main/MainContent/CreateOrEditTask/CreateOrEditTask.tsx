@@ -9,7 +9,7 @@ type Priority = 'High' | 'Medium' | 'Low' | undefined;
 
 const CreateOrEditTask = ({ createOrEditTaskID }: { createOrEditTaskID: string }) => {
   const { theme, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, handleCloseCreateOrEditTask, editTask, setEditTask } = useTaskTrackerContext();
-  const { newTask, setNewTask, handleSubmit, handleEditTaskSubmit, convertStringToTaskDate, convertTaskDateToString, handleDiscardNewTask } = useCreateOrEditTaskContext();
+  const { newTask, setNewTask, handleSubmit, handleEditTaskSubmit, handleDeleteTask, convertStringToTaskDate, convertTaskDateToString, handleDiscardNewTask } = useCreateOrEditTaskContext();
 
   const editTaskMode = editTask !== 'new';
   const [selected, setSelected] = useState<Priority>(undefined);
@@ -71,6 +71,14 @@ const CreateOrEditTask = ({ createOrEditTaskID }: { createOrEditTaskID: string }
     handleCloseCreateOrEditTask();
     handleDiscardNewTask();
     setNewTask(prev => ({ ...prev, key: Math.random() }));
+  }
+
+  // Handler function for deleting the editTask via the form
+  const handleDeleteEditTask = () => {
+    if (editTaskMode && editTask !== null) {
+      handleDeleteTask(editTask.key);
+      handleCloseCreateOrEditTask();
+    }
   }
 
   if (!editTask)
@@ -151,7 +159,7 @@ const CreateOrEditTask = ({ createOrEditTaskID }: { createOrEditTaskID: string }
           </div>
         </div>
         <div className={styles.formActions}>
-          <button type='button' className={styles.btnDiscard} onClick={!editTaskMode ? handleDiscardNewTask : undefined}>
+          <button type='button' className={styles.btnDiscard} onClick={!editTaskMode ? handleDiscardNewTask : handleDeleteEditTask}>
             {editTaskMode ? 'Delete' : 'Discard'}
           </button>
           <button type='submit' className={styles.btnCreate}>

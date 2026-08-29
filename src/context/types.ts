@@ -54,6 +54,7 @@ export interface CreateOrEditTaskContextType {
   setNewTask: React.Dispatch<React.SetStateAction<Task>>;
   handleSubmit: (e: React.SubmitEvent<HTMLFormElement>) => void;
   handleEditTaskSubmit: (e: React.SubmitEvent<HTMLFormElement>, editTask: Task) => void;
+  handleDeleteTask: (key: number) => void;
   convertStringToTaskDate: (dateString: string) => Date;
   convertTaskDateToString: (date: Date | undefined) => string;
   handleDiscardNewTask: () => void;

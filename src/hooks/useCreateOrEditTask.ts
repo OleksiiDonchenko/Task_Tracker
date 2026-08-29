@@ -41,6 +41,10 @@ export const useCreateOrEditTask = (setTasks: React.Dispatch<React.SetStateActio
     setTasks(prev => prev.map(task => task.key === editTask.key ? editTask : task));
   }
 
+  const handleDeleteTask = (key: number) => {
+    setTasks(prev => prev.filter(task => task.key !== key));
+  }
+
   const convertStringToTaskDate = (dateString: string): Date => {
     const [yearStr, monthStr, dayStr] = dateString.split('-');
 
@@ -76,5 +80,5 @@ export const useCreateOrEditTask = (setTasks: React.Dispatch<React.SetStateActio
     });
   }
 
-  return { newTask, setNewTask, handleSubmit, handleEditTaskSubmit, convertStringToTaskDate, convertTaskDateToString, handleDiscardNewTask };
+  return { newTask, setNewTask, handleSubmit, handleEditTaskSubmit, handleDeleteTask, convertStringToTaskDate, convertTaskDateToString, handleDiscardNewTask };
 };
