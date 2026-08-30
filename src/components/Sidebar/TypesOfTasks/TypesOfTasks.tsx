@@ -4,7 +4,7 @@ import { ActiveTasksIcon, AllTasksIcon, CompletedTasksIcon, TrashTasksIcon } fro
 import { useTaskTrackerContext } from '../../../context/TaskTrackerContext';
 
 const TypesOfTasks = () => {
-  const { getLiClass, handleTabChange } = useTaskTrackerContext();
+  const { getLiClass, handleTabChange, allTasksCount, activeTasksCount, completedTasksCount, trashTasksCount } = useTaskTrackerContext();
 
   return (
     <ul className={styles.typesOfTasks}>
@@ -14,7 +14,7 @@ const TypesOfTasks = () => {
           All tasks
         </div>
         <div className={styles.numberOfTasks}>
-          {12}
+          {allTasksCount}
         </div>
       </li>
       <li className={getLiClass(styles, 'active')} onClick={() => handleTabChange('active')}>
@@ -23,7 +23,7 @@ const TypesOfTasks = () => {
           Active
         </div>
         <div className={styles.numberOfTasks}>
-          {8}
+          {activeTasksCount}
         </div>
       </li>
       <li className={getLiClass(styles, 'completed')} onClick={() => handleTabChange('completed')}>
@@ -32,7 +32,7 @@ const TypesOfTasks = () => {
           Completed
         </div>
         <div className={styles.numberOfTasks}>
-          {4}
+          {completedTasksCount}
         </div>
       </li>
       <li className={getLiClass(styles, 'trash')} onClick={() => handleTabChange('trash')}>
@@ -41,7 +41,7 @@ const TypesOfTasks = () => {
           Trash
         </div>
         <div className={styles.numberOfTasks}>
-          {2}
+          {trashTasksCount}
         </div>
       </li>
     </ul>

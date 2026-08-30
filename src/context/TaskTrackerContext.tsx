@@ -93,9 +93,15 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
     setEditTask(null);
   }
 
+  // Task states
+  const [allTasksCount, setAllTasksCount] = useState(0);
+  const [activeTasksCount, setActiveTasksCount] = useState(0);
+  const [completedTasksCount, setCompletedTasksCount] = useState(0);
+  const [trashTasksCount, setTrashTasksCount] = useState(0);
+
   return (
     <TaskTrackerContext.Provider value={{
-      theme, toggleTheme, setActiveTab, getLiClass, handleTabChange, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, editTask, setEditTask, handleAddNewTask, handleEditTask, handleCloseCreateOrEditTask,
+      theme, toggleTheme, activeTab, setActiveTab, getLiClass, handleTabChange, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, editTask, setEditTask, handleAddNewTask, handleEditTask, handleCloseCreateOrEditTask, allTasksCount, setAllTasksCount, activeTasksCount, setActiveTasksCount, completedTasksCount, setCompletedTasksCount, trashTasksCount, setTrashTasksCount,
     }}>
       {children}
     </ TaskTrackerContext.Provider>

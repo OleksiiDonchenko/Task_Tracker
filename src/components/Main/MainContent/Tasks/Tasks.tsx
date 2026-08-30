@@ -7,8 +7,8 @@ import DropDownThreeDots from './DropDownThreeDots/DropDownThreeDots';
 import { useCreateOrEditTaskContext } from '../../../../context/CreateOrEditTaskContext';
 
 const Tasks = () => {
-  const { theme } = useTaskTrackerContext();
-  const { tasks, filtredTasks } = useTasksContext();
+  const { theme, setAllTasksCount, setActiveTasksCount, setCompletedTasksCount, setTrashTasksCount } = useTaskTrackerContext();
+  const { tasks, displayedTasks } = useTasksContext();
   const { handleCompletedTask } = useCreateOrEditTaskContext();
 
   const [taskKey, setTaskKey] = useState(0);
@@ -36,9 +36,16 @@ const Tasks = () => {
     }
   }, []);
 
+  useEffect(() => {
+    setAllTasksCount(tasks.length);
+    setActiveTasksCount(tasks.filter(task => !task.completed).length);
+    setCompletedTasksCount(tasks.filter(task => task.completed).length);
+    setTrashTasksCount(tasks.filter(task => task.deleted).length);
+  }, [tasks]);
+
   return (
     <ul className={styles.tasks} data-theme={theme}>
-      {tasks.length > 0 ? filtredTasks.map(task => {
+      {tasks.length > 0 ? displayedTasks.map(task => {
         return <li className={styles.task} key={task.key}>
           <label className={styles.customCheckbox}>
             <input type="checkbox" id='completed' defaultChecked={task.completed} onClick={() => handleCompletedTask(task)} />

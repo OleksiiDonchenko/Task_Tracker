@@ -2,6 +2,7 @@ import type { Task } from "../context/types";
 
 export const testArrTasks: Task[] = [{
   completed: false,
+  deleted: false,
   title: 'Design new landing page',
   description: 'Create a modern and clean landing page for the product',
   priority: 'High',
@@ -14,6 +15,7 @@ export const testArrTasks: Task[] = [{
   key: Math.random(),
 }, {
   completed: true,
+  deleted: false,
   title: 'Fix sign up bug',
   description: 'Users are unable to sign up with Google',
   priority: 'High',
@@ -26,6 +28,7 @@ export const testArrTasks: Task[] = [{
   key: Math.random(),
 }, {
   completed: false,
+  deleted: false,
   title: 'Write API documentation',
   description: 'Add full documentation for the tasks endpoints',
   priority: 'Medium',
@@ -38,6 +41,7 @@ export const testArrTasks: Task[] = [{
   key: Math.random(),
 }, {
   completed: false,
+  deleted: false,
   title: 'Update task statuses design',
   description: 'Improve the visual style of task statuses',
   priority: 'Low',

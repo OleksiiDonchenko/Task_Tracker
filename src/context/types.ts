@@ -1,6 +1,7 @@
 export interface TaskTrackerContextType {
   theme: Theme;
   toggleTheme: () => void;
+  activeTab: TabType;
   setActiveTab: React.Dispatch<React.SetStateAction<TabType>>;
   getLiClass: (styles: Record<string, string>, tabName: TabType) => string;
   handleTabChange: (tabName: TabType) => void;
@@ -20,6 +21,14 @@ export interface TaskTrackerContextType {
   handleAddNewTask: () => void;
   handleEditTask: (task: Task, setTaskKey: (n: number) => void) => void;
   handleCloseCreateOrEditTask: () => void;
+  allTasksCount: number;
+  setAllTasksCount: React.Dispatch<React.SetStateAction<number>>;
+  activeTasksCount: number;
+  setActiveTasksCount: React.Dispatch<React.SetStateAction<number>>;
+  completedTasksCount: number;
+  setCompletedTasksCount: React.Dispatch<React.SetStateAction<number>>;
+  trashTasksCount: number;
+  setTrashTasksCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export type Theme = 'light' | 'dark';
@@ -29,6 +38,7 @@ export type TabTypeOfSort = 'newest' | 'oldest' | 'priority';
 export type ArrowStatus = 'closed' | 'open';
 export type Task = {
   completed: boolean;
+  deleted: boolean;
   title: string;
   description: string;
   priority: Priority;
@@ -47,9 +57,9 @@ export type EditTask = Task | 'new' | null;
 export interface TasksContextType {
   tasks: Task[];
   setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
-  search: string; 
+  search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
-  filtredTasks: Task[];
+  displayedTasks: Task[];
 }
 
 export interface CreateOrEditTaskContextType {

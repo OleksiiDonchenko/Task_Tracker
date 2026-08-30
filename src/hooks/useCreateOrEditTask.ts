@@ -12,6 +12,7 @@ const dd = today.getDate();
 
 const initialStateDate: Task = {
   completed: false,
+  deleted: false,
   title: '',
   description: '',
   priority: 'High',
@@ -42,7 +43,7 @@ export const useCreateOrEditTask = (setTasks: React.Dispatch<React.SetStateActio
   }
 
   const handleDeleteTask = (key: number) => {
-    setTasks(prev => prev.filter(task => task.key !== key));
+    setTasks(prev => prev.map(task => task.key === key ? { ...task, deleted: true } : task));
   }
 
   const convertStringToTaskDate = (dateString: string): Date => {

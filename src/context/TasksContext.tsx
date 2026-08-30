@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import type { TasksContextType } from "./types";
 import { useTasks } from "../hooks/useTasks";
+import { useTaskTrackerContext } from "./TaskTrackerContext";
 
 const TasksContext = createContext<TasksContextType | undefined>(undefined);
 
@@ -14,10 +15,11 @@ export const useTasksContext = () => {
 }
 
 export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
-  const { tasks, setTasks, search, setSearch, filtredTasks } = useTasks();
+  const { activeTab } = useTaskTrackerContext();
+  const { tasks, setTasks, search, setSearch,  displayedTasks } = useTasks(activeTab);
 
   return (
-    <TasksContext.Provider value={{ tasks, setTasks, search, setSearch, filtredTasks }}>
+    <TasksContext.Provider value={{ tasks, setTasks, search, setSearch, displayedTasks }}>
       {children}
     </TasksContext.Provider>
   )
