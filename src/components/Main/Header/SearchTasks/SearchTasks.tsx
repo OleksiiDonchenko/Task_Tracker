@@ -1,16 +1,32 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import styles from './SearchTasks.module.css';
 import { SearchIcon } from '../../../../assets/icons/components';
 import { useTaskTrackerContext } from '../../../../context/TaskTrackerContext';
+import { useTasksContext } from '../../../../context/TasksContext';
 
 const SearchTasks = () => {
-  const [search, setSearch] = useState('');
   const { theme } = useTaskTrackerContext();
+  const { search, setSearch } = useTasksContext();
+
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSearchInputClick = () => {
+    if (searchInputRef.current) {
+      try {
+        searchInputRef.current.showPicker();
+      } catch (error) {
+        searchInputRef.current.focus();
+      }
+    }
+  }
 
   return (
-    <div className={styles.searchWrapper}>
-      <SearchIcon />
+    <div className={styles.searchWrapper} onClick={handleSearchInputClick}>
+      <div onClick={handleSearchInputClick}>
+        <SearchIcon />
+      </div>
       <input
+        ref={searchInputRef}
         data-theme={theme}
         autoComplete='off'
         type='text'

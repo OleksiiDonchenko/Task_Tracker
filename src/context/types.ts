@@ -47,6 +47,9 @@ export type EditTask = Task | 'new' | null;
 export interface TasksContextType {
   tasks: Task[];
   setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+  search: string; 
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+  filtredTasks: Task[];
 }
 
 export interface CreateOrEditTaskContextType {

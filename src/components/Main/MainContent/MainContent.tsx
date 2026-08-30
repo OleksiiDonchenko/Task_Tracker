@@ -3,7 +3,6 @@ import styles from './MainContent.module.css';
 import TaskTabsAndSort from './TaskTabsAndSort/TaskTabsAndSort';
 import Tasks from './Tasks/Tasks';
 import CreateOrEditTask from './CreateOrEditTask/CreateOrEditTask';
-import { TasksProvider } from '../../../context/TasksContext';
 import { CreateOrEditTaskProvider } from '../../../context/CreateOrEditTaskContext';
 
 const MainContent = () => {
@@ -12,12 +11,10 @@ const MainContent = () => {
   return (
     <div className={styles.mainContent}>
       <TaskTabsAndSort />
-      <TasksProvider>
-        <CreateOrEditTaskProvider>
-          <Tasks />
-          <CreateOrEditTask createOrEditTaskID={createOrEditTaskID} />
-        </CreateOrEditTaskProvider>
-      </TasksProvider>
+      <CreateOrEditTaskProvider>
+        <Tasks />
+        <CreateOrEditTask createOrEditTaskID={createOrEditTaskID} />
+      </CreateOrEditTaskProvider>
     </div>
   );
 };

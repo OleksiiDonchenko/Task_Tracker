@@ -9,6 +9,7 @@
 
 .searchWrapper svg {
   user-select: none;
+  cursor: pointer;
 }
 
 .searchWrapper:has(input:placeholder-shown)::after {

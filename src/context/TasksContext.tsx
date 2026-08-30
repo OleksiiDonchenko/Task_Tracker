@@ -14,10 +14,10 @@ export const useTasksContext = () => {
 }
 
 export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
-  const { tasks, setTasks } = useTasks();
+  const { tasks, setTasks, search, setSearch, filtredTasks } = useTasks();
 
   return (
-    <TasksContext.Provider value={{ tasks, setTasks }}>
+    <TasksContext.Provider value={{ tasks, setTasks, search, setSearch, filtredTasks }}>
       {children}
     </TasksContext.Provider>
   )

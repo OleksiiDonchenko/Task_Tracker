@@ -8,7 +8,7 @@ import { useCreateOrEditTaskContext } from '../../../../context/CreateOrEditTask
 
 const Tasks = () => {
   const { theme } = useTaskTrackerContext();
-  const { tasks } = useTasksContext();
+  const { tasks, filtredTasks } = useTasksContext();
   const { handleCompletedTask } = useCreateOrEditTaskContext();
 
   const [taskKey, setTaskKey] = useState(0);
@@ -38,7 +38,7 @@ const Tasks = () => {
 
   return (
     <ul className={styles.tasks} data-theme={theme}>
-      {tasks.length > 0 ? tasks.map(task => {
+      {tasks.length > 0 ? filtredTasks.map(task => {
         return <li className={styles.task} key={task.key}>
           <label className={styles.customCheckbox}>
             <input type="checkbox" id='completed' defaultChecked={task.completed} onClick={() => handleCompletedTask(task)} />
