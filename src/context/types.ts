@@ -11,6 +11,7 @@ export interface TaskTrackerContextType {
   handlePriorityChange: (tabName: TabTypeOfPriority) => void;
   setActiveTabOfSort: React.Dispatch<React.SetStateAction<TabTypeOfSort>>;
   getLiClassOfSort: (styles: Record<string, string>, tabName: TabTypeOfSort) => string;
+  activeTabOfSort: TabTypeOfSort;
   handleSortChange: (tabName: TabTypeOfSort) => void;
   sortArrowStatus: ArrowStatus;
   toggleSortArrow: () => void;

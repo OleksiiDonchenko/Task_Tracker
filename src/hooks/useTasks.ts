@@ -1,13 +1,31 @@
 import { useMemo, useState } from "react";
-import type { TabType, TabTypeOfPriority, Task } from "../context/types";
+import type { Date, TabType, TabTypeOfPriority, TabTypeOfSort, Task } from "../context/types";
 import { testArrTasks } from "../dataTest/dataTest";
 
-export const useTasks = (activeTab: TabType, activeTabOfPriority: TabTypeOfPriority) => {
+const MONTH_MAP: Record<string, number> = {
+  'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5,
+  'July': 6, 'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11
+};
+
+const PRIORITY_WEIGHTS = {
+  'High': 3,
+  'Medium': 2,
+  'Low': 1,
+}
+
+const getTaskTimestamp = (dateObj: Date): number => {
+  // Find the numeric index of the month (if the month is specified incorrectly, it will return 0 - January)
+  const monthIndex = MONTH_MAP[dateObj.month] ?? 0;
+  // Let's create a standard Date object (in JS, months range from 0 to 11)
+  return new Date(dateObj.year, monthIndex, dateObj.day).getTime();
+};
+
+export const useTasks = (activeTab: TabType, activeTabOfPriority: TabTypeOfPriority, activeTabOfSort: TabTypeOfSort) => {
   const [search, setSearch] = useState('');
   const [tasks, setTasks] = useState<Task[]>(testArrTasks);
 
   const displayedTasks = useMemo(() => {
-    return tasks.filter(task => {
+    const filtered = tasks.filter(task => {
       // --- 1. FILTERING BY TAB ---
       if (activeTab === 'trash') {
         if (!task.deleted) return false; // In the trash we show only deleted items
@@ -40,7 +58,35 @@ export const useTasks = (activeTab: TabType, activeTabOfPriority: TabTypeOfPrior
 
       return matchesSearch;
     });
-  }, [tasks, activeTab, activeTabOfPriority, search]);
+
+    return filtered.toSorted((a, b) => {
+      // We convert the custom dates of both tasks into numbers for comparison.
+      const timeA = getTaskTimestamp(a.date);
+      const timeB = getTaskTimestamp(b.date);
+
+      switch (activeTabOfSort) {
+        case 'oldest':
+          // From oldest to newest (in ascending order of time)
+          return timeA - timeB;
+
+        case 'priority':
+          // First, let's compare priorities
+          const weightA = a.priority ? PRIORITY_WEIGHTS[a.priority] : 0;
+          const weightB = b.priority ? PRIORITY_WEIGHTS[b.priority] : 0;
+
+          if (weightB !== weightA) {
+            return weightB - weightA; // From high to low
+          }
+          // If the priorities are the same, we sort them by default (from new to old)
+          return timeB - timeA;
+
+        case 'newest':
+        default:
+          // Newest to oldest (time descending) - default
+          return timeB - timeA;
+      }
+    });
+  }, [tasks, activeTab, activeTabOfPriority, activeTabOfSort, search]);
 
   return { tasks, setTasks, search, setSearch, displayedTasks };
 }
