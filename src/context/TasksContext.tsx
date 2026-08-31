@@ -15,8 +15,8 @@ export const useTasksContext = () => {
 }
 
 export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
-  const { activeTab } = useTaskTrackerContext();
-  const { tasks, setTasks, search, setSearch,  displayedTasks } = useTasks(activeTab);
+  const { activeTab, activeTabOfPriority } = useTaskTrackerContext();
+  const { tasks, setTasks, search, setSearch,  displayedTasks } = useTasks(activeTab, activeTabOfPriority);
 
   return (
     <TasksContext.Provider value={{ tasks, setTasks, search, setSearch, displayedTasks }}>

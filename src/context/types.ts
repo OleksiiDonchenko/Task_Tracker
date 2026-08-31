@@ -5,6 +5,7 @@ export interface TaskTrackerContextType {
   setActiveTab: React.Dispatch<React.SetStateAction<TabType>>;
   getLiClass: (styles: Record<string, string>, tabName: TabType) => string;
   handleTabChange: (tabName: TabType) => void;
+  activeTabOfPriority: TabTypeOfPriority;
   setActiveTabOfPriority: React.Dispatch<React.SetStateAction<TabTypeOfPriority>>;
   getLiClassOfPriority: (style: string, styles: Record<string, string>, tabName: TabTypeOfPriority) => string;
   handlePriorityChange: (tabName: TabTypeOfPriority) => void;

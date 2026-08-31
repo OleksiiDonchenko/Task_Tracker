@@ -101,7 +101,7 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
 
   return (
     <TaskTrackerContext.Provider value={{
-      theme, toggleTheme, activeTab, setActiveTab, getLiClass, handleTabChange, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, editTask, setEditTask, handleAddNewTask, handleEditTask, handleCloseCreateOrEditTask, allTasksCount, setAllTasksCount, activeTasksCount, setActiveTasksCount, completedTasksCount, setCompletedTasksCount, trashTasksCount, setTrashTasksCount,
+      theme, toggleTheme, activeTab, setActiveTab, getLiClass, handleTabChange, activeTabOfPriority, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, editTask, setEditTask, handleAddNewTask, handleEditTask, handleCloseCreateOrEditTask, allTasksCount, setAllTasksCount, activeTasksCount, setActiveTasksCount, completedTasksCount, setCompletedTasksCount, trashTasksCount, setTrashTasksCount,
     }}>
       {children}
     </ TaskTrackerContext.Provider>
