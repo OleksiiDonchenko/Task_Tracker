@@ -39,7 +39,7 @@ const Tasks = () => {
   useEffect(() => {
     setAllTasksCount(tasks.length);
     setActiveTasksCount(tasks.filter(task => !task.completed).length);
-    setCompletedTasksCount(tasks.filter(task => task.completed).length);
+    setCompletedTasksCount(tasks.filter(task => task.completed && !task.deleted).length);
     setTrashTasksCount(tasks.filter(task => task.deleted).length);
   }, [tasks]);
 
