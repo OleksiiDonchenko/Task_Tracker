@@ -30,12 +30,14 @@ export interface TaskTrackerContextType {
   setActiveTasksCount: React.Dispatch<React.SetStateAction<number>>;
   completedTasksCount: number;
   setCompletedTasksCount: React.Dispatch<React.SetStateAction<number>>;
+  favoritesTasksCount: number;
+  setFavoritesTasksCount: React.Dispatch<React.SetStateAction<number>>;
   trashTasksCount: number;
   setTrashTasksCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export type Theme = 'light' | 'dark';
-export type TabType = 'all' | 'active' | 'completed' | 'trash';
+export type TabType = 'all' | 'active' | 'completed' | 'favorites' | 'trash';
 export type TabTypeOfPriority = 'all' | 'high' | 'medium' | 'low';
 export type TabTypeOfSort = 'newest' | 'oldest' | 'priority';
 export type ArrowStatus = 'closed' | 'open';
@@ -75,4 +77,5 @@ export interface CreateOrEditTaskContextType {
   convertTaskDateToString: (date: Date | undefined) => string;
   handleDiscardNewTask: () => void;
   handleCompletedTask: (task: Task) => void;
+  handleFavoriteTask: (task: Task) => void;
 }

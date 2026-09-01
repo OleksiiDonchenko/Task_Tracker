@@ -17,10 +17,10 @@ export const useCreateOrEditTaskContext = () => {
 export const CreateOrEditTaskProvider = ({ children }: { children: React.ReactNode }) => {
   const { setTasks } = useTasksContext();
 
-  const { newTask, setNewTask, handleSubmit, handleEditTaskSubmit, handleDeleteTask, convertStringToTaskDate, convertTaskDateToString, handleDiscardNewTask, handleCompletedTask } = useCreateOrEditTask(setTasks);
+  const { newTask, setNewTask, handleSubmit, handleEditTaskSubmit, handleDeleteTask, convertStringToTaskDate, convertTaskDateToString, handleDiscardNewTask, handleCompletedTask, handleFavoriteTask } = useCreateOrEditTask(setTasks);
 
   return (
-    <CreateOrEditTaskContext.Provider value={{ newTask, setNewTask, handleSubmit, handleEditTaskSubmit, handleDeleteTask, convertStringToTaskDate, handleDiscardNewTask, convertTaskDateToString, handleCompletedTask }}>
+    <CreateOrEditTaskContext.Provider value={{ newTask, setNewTask, handleSubmit, handleEditTaskSubmit, handleDeleteTask, convertStringToTaskDate, handleDiscardNewTask, convertTaskDateToString, handleCompletedTask, handleFavoriteTask }}>
       {children}
     </CreateOrEditTaskContext.Provider>
   )

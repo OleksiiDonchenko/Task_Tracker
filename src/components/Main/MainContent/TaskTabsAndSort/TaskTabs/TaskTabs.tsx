@@ -10,6 +10,7 @@ const TaskTabs = () => {
       <li className={getLiClass(styles, 'all')} onClick={() => handleTabChange('all')}>All</li>
       <li className={getLiClass(styles, 'active')} onClick={() => handleTabChange('active')}>Active</li>
       <li className={getLiClass(styles, 'completed')} onClick={() => handleTabChange('completed')}>Completed</li>
+      <li className={getLiClass(styles, 'favorites')} onClick={() => handleTabChange('favorites')}>Favorites</li>
     </ul>
   );
 };

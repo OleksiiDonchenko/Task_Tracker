@@ -34,6 +34,7 @@ export const useTasks = (activeTab: TabType, activeTabOfPriority: TabTypeOfPrior
 
         if (activeTab === 'active' && task.completed) return false;
         if (activeTab === 'completed' && !task.completed) return false;
+        if (activeTab === 'favorites' && !task.favorites) return false;
       }
 
       // --- 2. FILTERING BY PRIORITY ---

@@ -7,9 +7,9 @@ import DropDownThreeDots from './DropDownThreeDots/DropDownThreeDots';
 import { useCreateOrEditTaskContext } from '../../../../context/CreateOrEditTaskContext';
 
 const Tasks = () => {
-  const { theme, setAllTasksCount, setActiveTasksCount, setCompletedTasksCount, setTrashTasksCount } = useTaskTrackerContext();
+  const { theme, setAllTasksCount, setActiveTasksCount, setCompletedTasksCount, setFavoritesTasksCount, setTrashTasksCount } = useTaskTrackerContext();
   const { tasks, displayedTasks } = useTasksContext();
-  const { handleCompletedTask } = useCreateOrEditTaskContext();
+  const { handleCompletedTask, handleFavoriteTask } = useCreateOrEditTaskContext();
 
   const [taskKey, setTaskKey] = useState(0);
 
@@ -40,6 +40,7 @@ const Tasks = () => {
     setAllTasksCount(tasks.length);
     setActiveTasksCount(tasks.filter(task => !task.completed).length);
     setCompletedTasksCount(tasks.filter(task => task.completed && !task.deleted).length);
+    setFavoritesTasksCount(tasks.filter(task => task.favorites).length);
     setTrashTasksCount(tasks.filter(task => task.deleted).length);
   }, [tasks]);
 
@@ -69,7 +70,9 @@ const Tasks = () => {
               <CalendarIcon />
               {`${task.date.month} ${task.date.day}, ${task.date.year}`}
             </div>
-            <StarIcon favorites={task.favorites} />
+            <div className={styles.star} onClick={() => handleFavoriteTask(task)}>
+              <StarIcon favorites={task.favorites} />
+            </div>
             <div ref={dropDownThreeDotsRef} className={styles.threeDotsWrapper}>
               <div className={styles.threeDots} data-status={taskKey === task.key ? 'open' : 'closed'} onClick={() => handleThreeDotsClick(task.key)} tabIndex={0}>
                 <ThreeDotsVerticalIcon />

@@ -169,6 +169,26 @@
   color: #888B96;
 }
 
+.star {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.star svg {
+  color: #888B96;
+  fill: #fff;
+}
+
+.star svg[data-theme='dark'] {
+  fill: #1F2225;
+}
+
+.star svg[data-favorites='true'] {
+  color: gold;
+  fill: gold;
+}
+
 .threeDotsWrapper {
   position: relative;
 }

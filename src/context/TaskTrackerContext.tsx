@@ -94,11 +94,12 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
   const [allTasksCount, setAllTasksCount] = useState(0);
   const [activeTasksCount, setActiveTasksCount] = useState(0);
   const [completedTasksCount, setCompletedTasksCount] = useState(0);
+  const [favoritesTasksCount, setFavoritesTasksCount] = useState(0);
   const [trashTasksCount, setTrashTasksCount] = useState(0);
 
   return (
     <TaskTrackerContext.Provider value={{
-      theme, toggleTheme, activeTab, setActiveTab, getLiClass, handleTabChange, activeTabOfPriority, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, activeTabOfSort, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, setSortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, editTask, setEditTask, handleAddNewTask, handleEditTask, handleCloseCreateOrEditTask, allTasksCount, setAllTasksCount, activeTasksCount, setActiveTasksCount, completedTasksCount, setCompletedTasksCount, trashTasksCount, setTrashTasksCount,
+      theme, toggleTheme, activeTab, setActiveTab, getLiClass, handleTabChange, activeTabOfPriority, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, activeTabOfSort, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, setSortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, editTask, setEditTask, handleAddNewTask, handleEditTask, handleCloseCreateOrEditTask, allTasksCount, setAllTasksCount, activeTasksCount, setActiveTasksCount, completedTasksCount, setCompletedTasksCount, favoritesTasksCount, setFavoritesTasksCount, trashTasksCount, setTrashTasksCount,
     }}>
       {children}
     </ TaskTrackerContext.Provider>

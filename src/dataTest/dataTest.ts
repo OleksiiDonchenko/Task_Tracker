@@ -52,4 +52,30 @@ export const testArrTasks: Task[] = [{
   },
   favorites: false,
   key: Math.random(),
-}];
+}, {
+  completed: false,
+  deleted: false,
+  title: 'Prepare project presentation',
+  description: 'Create slides for the product presentation',
+  priority: 'Medium',
+  date: {
+    month: 'May',
+    day: 16,
+    year: 2024,
+  },
+  favorites: false,
+  key: Math.random(),
+}, {
+  completed: false,
+  deleted: false,
+  title: 'Optimize performance',
+  description: 'Improve the loading speed of the dashboard',
+  priority: 'Low',
+  date: {
+    month: 'May',
+    day: 15,
+    year: 2024,
+  },
+  favorites: false,
+  key: Math.random(),
+},];

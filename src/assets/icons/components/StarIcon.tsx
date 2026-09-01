@@ -3,7 +3,7 @@ import styles from './Icons.module.css';
 import { useTaskTrackerContext } from '../../../context/TaskTrackerContext';
 
 type StarIconProps = {
-  favorites: boolean;
+  favorites?: boolean;
 }
 
 export const StarIcon = ({ favorites }: StarIconProps) => {

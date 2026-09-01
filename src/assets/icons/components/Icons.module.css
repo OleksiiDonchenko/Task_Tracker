@@ -58,22 +58,6 @@
 .starIcon {
   width: 25px;
   height: 25px;
-  color: #888B96;
-  fill: #fff;
-}
-
-.starIcon[data-theme='dark'] {
-  fill: #1F2225;
-}
-
-.starIcon[data-favorites='true'][data-theme='light'] {
-  color: gold;
-  fill: gold;
-}
-
-.starIcon[data-favorites='true'][data-theme='dark'] {
-  color: gold;
-  fill: gold;
 }
 
 .threeDotsVerticalIcon {
