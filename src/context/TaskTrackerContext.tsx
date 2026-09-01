@@ -31,7 +31,6 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
   const [theme, setTheme] = useState<Theme>('light');
 
   const toggleTheme = () => {
-    setSortArrowStatus('closed');
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
@@ -46,7 +45,6 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
 
   const handleTabChange = (tabName: TabType) => {
     setActiveTab(tabName);
-    setSortArrowStatus('closed');
   }
 
   // Priority of tasks
@@ -60,7 +58,6 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
 
   const handlePriorityChange = (tabName: TabTypeOfPriority) => {
     setActiveTabOfPriority(tabName);
-    setSortArrowStatus('closed');
   }
 
   // Types of sort
@@ -101,7 +98,7 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
 
   return (
     <TaskTrackerContext.Provider value={{
-      theme, toggleTheme, activeTab, setActiveTab, getLiClass, handleTabChange, activeTabOfPriority, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, activeTabOfSort, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, editTask, setEditTask, handleAddNewTask, handleEditTask, handleCloseCreateOrEditTask, allTasksCount, setAllTasksCount, activeTasksCount, setActiveTasksCount, completedTasksCount, setCompletedTasksCount, trashTasksCount, setTrashTasksCount,
+      theme, toggleTheme, activeTab, setActiveTab, getLiClass, handleTabChange, activeTabOfPriority, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, activeTabOfSort, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, setSortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, editTask, setEditTask, handleAddNewTask, handleEditTask, handleCloseCreateOrEditTask, allTasksCount, setAllTasksCount, activeTasksCount, setActiveTasksCount, completedTasksCount, setCompletedTasksCount, trashTasksCount, setTrashTasksCount,
     }}>
       {children}
     </ TaskTrackerContext.Provider>
