@@ -1,0 +1,16 @@
+.footer {
+  grid-area: footer;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer[data-theme='light'] {
+  background-color: #FFFEFF;
+}
+
+.footer[data-theme='dark'] {
+  color: #D3D4D8;
+  background-color: #191D20;
+}
