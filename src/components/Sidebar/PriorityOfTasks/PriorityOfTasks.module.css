@@ -9,12 +9,30 @@
   margin-bottom: 15px;
 }
 
+.priorityContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .priorities {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+
   width: 100%;
   max-width: 230px;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+  transition: max-height 0.8s ease-in-out, opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+.priorities[data-arrow='open'] {
+  max-height: 150px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .all,

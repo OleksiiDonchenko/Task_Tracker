@@ -19,6 +19,8 @@ export interface TaskTrackerContextType {
   priorityArrowStatus: ArrowStatus;
   setPriorityArrowStatus: React.Dispatch<React.SetStateAction<ArrowStatus>>;
   togglePriorityArrow: () => void;
+  filterPriorityArrowStatus: ArrowStatus;
+  toggleFilterPriorityArrow: () => void;
   editTask: EditTask;
   setEditTask: React.Dispatch<React.SetStateAction<EditTask>>;
   handleAddNewTask: () => void;

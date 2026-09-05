@@ -27,6 +27,13 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
     setPriorityArrowStatus(prev => prev === 'closed' ? 'open' : 'closed');
   }
 
+  // Filter priority arrow status
+  const [filterPriorityArrowStatus, setFilterPriorityArrowStatus] = useState<ArrowStatus>('closed');
+
+  const toggleFilterPriorityArrow = () => {
+    setFilterPriorityArrowStatus(prev => prev === 'closed' ? 'open' : 'closed');
+  }
+
   // Theme color
   const [theme, setTheme] = useState<Theme>('light');
 
@@ -99,7 +106,7 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
 
   return (
     <TaskTrackerContext.Provider value={{
-      theme, toggleTheme, activeTab, setActiveTab, getLiClass, handleTabChange, activeTabOfPriority, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, activeTabOfSort, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, setSortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, editTask, setEditTask, handleAddNewTask, handleEditTask, handleCloseCreateOrEditTask, allTasksCount, setAllTasksCount, activeTasksCount, setActiveTasksCount, completedTasksCount, setCompletedTasksCount, favoritesTasksCount, setFavoritesTasksCount, trashTasksCount, setTrashTasksCount,
+      theme, toggleTheme, activeTab, setActiveTab, getLiClass, handleTabChange, activeTabOfPriority, setActiveTabOfPriority, getLiClassOfPriority, handlePriorityChange, activeTabOfSort, setActiveTabOfSort, getLiClassOfSort, handleSortChange, sortArrowStatus, setSortArrowStatus, toggleSortArrow, priorityArrowStatus, setPriorityArrowStatus, togglePriorityArrow, filterPriorityArrowStatus, toggleFilterPriorityArrow, editTask, setEditTask, handleAddNewTask, handleEditTask, handleCloseCreateOrEditTask, allTasksCount, setAllTasksCount, activeTasksCount, setActiveTasksCount, completedTasksCount, setCompletedTasksCount, favoritesTasksCount, setFavoritesTasksCount, trashTasksCount, setTrashTasksCount,
     }}>
       {children}
     </ TaskTrackerContext.Provider>
