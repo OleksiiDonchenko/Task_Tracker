@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Tasks.module.css';
 import { useTaskTrackerContext } from '../../../../context/TaskTrackerContext';
 import { CalendarIcon, StarIcon, ThreeDotsVerticalIcon } from '../../../../assets/icons/components';
@@ -14,33 +14,28 @@ const Tasks = () => {
   const [taskKey, setTaskKey] = useState(0);
 
   const handleThreeDotsClick = (key: number) => {
-    tasks.forEach(task => {
-      key === task.key ? setTaskKey(task.key) : undefined;
-      key === taskKey ? setTaskKey(0) : undefined;
-    })
+    setTaskKey(prevKey => (prevKey === key ? 0 : key));
   }
 
-  const dropDownThreeDotsRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropDownThreeDotsRef.current && !dropDownThreeDotsRef.current.contains(e.target as Node)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      // If the click was not inside an element with the threeDotsWrapper class, close the menu.
+      if (!(event.target as HTMLElement).closest(`.${styles.threeDotsWrapper}`)) {
         setTaskKey(0);
       }
-    }
+    };
 
     document.addEventListener('mousedown', handleClickOutside);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-    }
+    };
   }, []);
 
   useEffect(() => {
-    setAllTasksCount(tasks.length);
-    setActiveTasksCount(tasks.filter(task => !task.completed).length);
+    setAllTasksCount(tasks.filter(task => !task.deleted).length);
+    setActiveTasksCount(tasks.filter(task => !task.completed && !task.deleted).length);
     setCompletedTasksCount(tasks.filter(task => task.completed && !task.deleted).length);
-    setFavoritesTasksCount(tasks.filter(task => task.favorites).length);
+    setFavoritesTasksCount(tasks.filter(task => task.favorites && !task.deleted).length);
     setTrashTasksCount(tasks.filter(task => task.deleted).length);
   }, [tasks]);
 
@@ -73,11 +68,17 @@ const Tasks = () => {
             <div className={styles.star} onClick={() => handleFavoriteTask(task)}>
               <StarIcon favorites={task.favorites} />
             </div>
-            <div ref={dropDownThreeDotsRef} className={styles.threeDotsWrapper}>
-              <div className={styles.threeDots} data-status={taskKey === task.key ? 'open' : 'closed'} onClick={() => handleThreeDotsClick(task.key)} tabIndex={0}>
+            <div className={styles.threeDotsWrapper}>
+              <div
+                className={styles.threeDots}
+                onClick={() => handleThreeDotsClick(task.key)}
+                tabIndex={0}>
                 <ThreeDotsVerticalIcon />
               </div>
-              <DropDownThreeDots task={task} threeDotsStatus={taskKey === task.key ? 'open' : 'closed'} setTaskKey={setTaskKey} />
+              <DropDownThreeDots
+                task={task}
+                threeDotsStatus={taskKey === task.key ? 'open' : 'closed'}
+                setTaskKey={setTaskKey} />
             </div>
           </div>
         </li>
