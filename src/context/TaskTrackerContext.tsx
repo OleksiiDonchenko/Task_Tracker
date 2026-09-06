@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import type { ArrowStatus, EditTask, TabType, TabTypeOfPriority, TabTypeOfSort, Task, TaskTrackerContextType, Theme } from './types';
-import { STORAGE_KEYS, VALID_TABS } from '../constants/storage';
+import { STORAGE_KEYS, VALID_TABS, VALID_TABS_PRIORITY } from '../constants/storage';
 
 const TaskTrackerContext = createContext<TaskTrackerContextType | undefined>(undefined);
 
@@ -65,7 +65,6 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
     localStorage.setItem(STORAGE_KEYS.ACTIVE_TAB, activeTab);
   }, [activeTab]);
 
-
   const getLiClass = (styles: Record<string, string>, tabName: TabType) => {
     return activeTab === tabName
       ? `${styles.typeOfTasks} ${styles._active}`
@@ -77,7 +76,19 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
   }
 
   // Priority of tasks
-  const [activeTabOfPriority, setActiveTabOfPriority] = useState<TabTypeOfPriority>('all');
+  const [activeTabOfPriority, setActiveTabOfPriority] = useState<TabTypeOfPriority>(() => {
+    const savedTab = localStorage.getItem(STORAGE_KEYS.ACTIVE_TAB_PRIORITY) as TabTypeOfPriority | null;
+
+    if (savedTab && VALID_TABS_PRIORITY.includes(savedTab)) {
+      return savedTab;
+    }
+
+    return 'all';
+  });
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEYS.ACTIVE_TAB_PRIORITY, activeTabOfPriority);
+  }, [activeTabOfPriority]);
 
   const getLiClassOfPriority = (style: string, styles: Record<string, string>, tabName: TabTypeOfPriority) => {
     return activeTabOfPriority === tabName
