@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import type { ArrowStatus, EditTask, TabType, TabTypeOfPriority, TabTypeOfSort, Task, TaskTrackerContextType, Theme } from './types';
+import { STORAGE_KEYS } from '../constants/storage';
 
 const TaskTrackerContext = createContext<TaskTrackerContextType | undefined>(undefined);
 
@@ -35,7 +36,15 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
   }
 
   // Theme color
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>(() => {
+    const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME) as Theme | null;
+
+    return savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'light';
+  });
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEYS.THEME, theme);
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
