@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import type { ArrowStatus, EditTask, TabType, TabTypeOfPriority, TabTypeOfSort, Task, TaskTrackerContextType, Theme } from './types';
-import { STORAGE_KEYS } from '../constants/storage';
+import { STORAGE_KEYS, VALID_TABS } from '../constants/storage';
 
 const TaskTrackerContext = createContext<TaskTrackerContextType | undefined>(undefined);
 
@@ -51,7 +51,20 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
   };
 
   // Tabs of tasks
-  const [activeTab, setActiveTab] = useState<TabType>('all');
+  const [activeTab, setActiveTab] = useState<TabType>(() => {
+    const savedTab = localStorage.getItem(STORAGE_KEYS.ACTIVE_TAB) as TabType | null;
+
+    if (savedTab && VALID_TABS.includes(savedTab)) {
+      return savedTab;
+    }
+
+    return 'all';
+  });
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEYS.ACTIVE_TAB, activeTab);
+  }, [activeTab]);
+
 
   const getLiClass = (styles: Record<string, string>, tabName: TabType) => {
     return activeTab === tabName
