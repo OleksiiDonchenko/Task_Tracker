@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import type { ArrowStatus, EditTask, TabType, TabTypeOfPriority, TabTypeOfSort, Task, TaskTrackerContextType, Theme } from './types';
-import { STORAGE_KEYS, VALID_TABS, VALID_TABS_PRIORITY } from '../constants/storage';
+import { STORAGE_KEYS, VALID_TABS, VALID_TABS_PRIORITY, VALID_TABS_SORT } from '../constants/storage';
 
 const TaskTrackerContext = createContext<TaskTrackerContextType | undefined>(undefined);
 
@@ -101,7 +101,19 @@ export const TaskTrackerProvider = ({ children }: { children: React.ReactNode })
   }
 
   // Types of sort
-  const [activeTabOfSort, setActiveTabOfSort] = useState<TabTypeOfSort>('newest');
+  const [activeTabOfSort, setActiveTabOfSort] = useState<TabTypeOfSort>(() => {
+    const savedTab = localStorage.getItem(STORAGE_KEYS.ACTIVE_TAB_SORT) as TabTypeOfSort | null;
+
+    if (savedTab && VALID_TABS_SORT.includes(savedTab)) {
+      return savedTab;
+    }
+
+    return 'newest';
+  });
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEYS.ACTIVE_TAB_SORT, activeTabOfSort);
+  }, [activeTabOfSort]);
 
   const getLiClassOfSort = (styles: Record<string, string>, tabName: TabTypeOfSort) => {
     return activeTabOfSort === tabName
