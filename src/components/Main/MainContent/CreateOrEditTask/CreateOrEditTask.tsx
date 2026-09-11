@@ -17,6 +17,36 @@ const CreateOrEditTask = ({ createOrEditTaskID }: { createOrEditTaskID: string }
   const options: Priority[] = ['High', 'Medium', 'Low'];
   const [date, setDate] = useState<string>('');
   const dateInputRef = useRef<HTMLInputElement>(null);
+  const [isFormEmpty, setIsFormEmpty] = useState(false);
+
+  // Alert if form isn't empty
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      if (isFormEmpty) {
+        event.preventDefault();
+        (event as any).returnValue = '';
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [isFormEmpty]);
+
+  // Form isn't empty if we have editTask
+  useEffect(() => {
+    if (editTask !== 'new' && editTask !== null) {
+      setIsFormEmpty(true);
+    }
+  }, [editTask]);
+
+  // Form isn't empty if newTask.title isn't empty
+  useEffect(() => {
+    if (newTask.title) {
+      setIsFormEmpty(true);
+    } else {
+      setIsFormEmpty(false);
+    }
+  }, [newTask.title]);
 
   // Change jsx markup when an option is chosen
   const handleOptionClick = (value: Priority) => {
@@ -71,6 +101,7 @@ const CreateOrEditTask = ({ createOrEditTaskID }: { createOrEditTaskID: string }
     handleCloseCreateOrEditTask();
     handleDiscardNewTask();
     setNewTask(prev => ({ ...prev, key: Math.random() }));
+    setIsFormEmpty(false);
   }
 
   // Handler function for deleting the editTask via the form
@@ -78,6 +109,7 @@ const CreateOrEditTask = ({ createOrEditTaskID }: { createOrEditTaskID: string }
     if (editTaskMode && editTask !== null) {
       handleDeleteTask(editTask.key);
       handleCloseCreateOrEditTask();
+      setIsFormEmpty(false);
     }
   }
 
